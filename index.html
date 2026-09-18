@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daniela Torp – Intimita v souvislostech</title>
+  <meta name="description" content="Daniela Torp – intimity koučka, lektorka a terapeutka. Workshopy, osobní konzultace a 6 pilířů intimity.">
+
+  <style>
+    /* =========================================
+       1. GLOBAL RESET & BASE STYLES
+       ========================================= */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+    :root {
+      --color-primary: #ee5a7a;
+      --color-primary-hover: #d84566;
+      --color-text: #080808;
+      --color-muted: #666;
+      --color-bg-light: #fff;
+      --font-main: 'Roboto', Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--color-text);
+      font-weight: 300;
+      background: var(--color-bg-light);
+      line-height: 1.6;
+    }
+
+    a, button {
+      color: inherit;
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .wrap {
+      max-width: 1344px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* =========================================
+       2. HEADER & NAVIGATION
+       ========================================= */
+    header {
+      height: 100px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 4.3%;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    header .wrap {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+
+    .logo {
+      width: 280px;
+      height: 80px;
+      object-fit: contain;
+      margin-right: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 21px;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .nav a:hover, .nav .drop:hover {
+      color: var(--color-primary);
+    }
+
+    .nav .drop {
+      position: relative;
+      cursor: pointer;
+      padding: 10px 0;
+    }
+
+    .nav .drop:after {
+      content: '▼';
+      font-size: 8px;
+      margin-left: 6px;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 8px 0;
+      min-width: 250px;
+      z-index: 100;
+    }
+
+    .nav .drop:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 9px 18px;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .dropdown-menu a:hover {
+      background: #fff5f7;
+      color: var(--color-primary);
+    }
+
+    .flag {
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 20px;
+      cursor: default;
+      color: #555;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      font-size: 24px;
+      padding: 5px;
+    }
+
+    /* =========================================
+       3. HERO SECTION
+       ========================================= */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 30px 15px 90px;
+      background: linear-gradient(90deg, #f9dbe3 0%, #f8d7e1 31%, #fff 49%, #d7f0f3 71%, #d5eff2 100%);
+    }
+
+    .hero:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 33% 75% at 25% 40%, rgba(246,174,194,.68), transparent 70%),
+                  radial-gradient(ellipse 30% 75% at 80% 45%, rgba(113,210,226,.55), transparent 73%),
+                  radial-gradient(ellipse 38% 90% at 50% 48%, #fff 3%, rgba(255,255,255,.75) 37%, transparent 69%);
+      pointer-events: none;
+    }
+
+    .intro {
+      position: relative;
+      z-index: 1;
+      max-width: 580px;
+      margin: auto;
+    }
+
+    .intro h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 14px;
+      color: #111;
+    }
+
+    .intro p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 14px;
+      color: #333;
+    }
+
+    .dates {
+      margin: 25px auto 25px;
+      border: 1px solid var(--color-primary);
+      width: 100%;
+      max-width: 530px;
+      min-height: 140px;
+      padding: 16px 20px;
+      font-size: 13.5px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+    }
+
+    .dates h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .dates-list div {
+      margin-bottom: 8px;
+    }
+
+    .dates-list button {
+      color: #222;
+      font-size: 13.5px;
+      text-align: center;
+      transition: color 0.2s;
+    }
+
+    .dates-list button:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .button.primary:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* =========================================
+       4. SECTIONS COMMON
+       ========================================= */
+    section {
+      padding: 70px 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #111;
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 45px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       5. 6 PILÍŘŮ INTIMITY
+       ========================================= */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .pillar-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 26px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+    }
+
+    .pillar-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .pillar-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .pillar-card p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .pillar-btn {
+      align-self: flex-start;
+      color: var(--color-primary);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    .pillar-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================================
+       6. O MNĚ
+       ========================================= */
+    .about-box {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      background: #faf8f8;
+      border-radius: 16px;
+      padding: 50px;
+      margin-top: 20px;
+    }
+
+    .about-img {
+      width: 320px;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .about-text h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #111;
+    }
+
+    .about-text p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    /* =========================================
+       7. WORKSHOPY
+       ========================================= */
+    .workshops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 35px;
+    }
+
+    .ws-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .ws-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+    }
+
+    .ws-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .ws-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .ws-content h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .ws-content p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .ws-btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    /* =========================================
+       8. KONTAKT
+       ========================================= */
+    .contact {
+      background: #fdfbfb;
+      border-top: 1px solid #f0e8e8;
+    }
+
+    .contact .form {
+      max-width: 620px;
+      margin: auto;
+      background: #fff;
+      padding: 38px;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 6px;
+    }
+
+    .field input, .field textarea {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 13.5px;
+      transition: border-color 0.2s;
+    }
+
+    .field input:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-bottom {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .notice {
+      font-size: 11px;
+      color: #777;
+      line-height: 1.4;
+    }
+
+    .send {
+      background: var(--color-primary);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .send:hover {
+      background: var(--color-primary-hover);
+    }
+
+    .success-box {
+      display: none;
+      max-width: 620px;
+      margin: 20px auto 0;
+      background: #eafaf1;
+      border: 1px solid #a3e9be;
+      color: #276749;
+      padding: 22px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .success-box h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    /* =========================================
+       9. FOOTER
+       ========================================= */
+    footer {
+      background: #1e1e1e;
+      color: #ccc;
+      padding: 60px 0 30px;
+      font-size: 13px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 35px;
+      margin-bottom: 40px;
+    }
+
+    footer h4 {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    footer a, footer button {
+      display: block;
+      color: #aaa;
+      margin-bottom: 9px;
+      font-size: 13px;
+      text-align: left;
+      transition: color 0.2s;
+    }
+
+    footer a:hover, footer button:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #888;
+      font-size: 12px;
+    }
+
+    .social a {
+      display: inline-block;
+      margin-right: 12px;
+      font-size: 16px;
+      color: #aaa;
+    }
+
+    /* =========================================
+       10. MODALS
+       ========================================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: #fff;
+      max-width: 520px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 30px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      font-size: 24px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .modal-body {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      white-space: pre-line;
+    }
+
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .mobile-menu-btn { display: block; }
+      .about-box { flex-direction: column; padding: 25px; }
+      .about-img { width: 100%; height: 260px; }
+      .contact .form { grid-template-columns: 1fr; padding: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="wrap">
+      <a href="index.html">
+        <img class="logo" src="https://www.danielatorp.cz/wp-content/uploads/2020/02/logo_perem_bez_pozadi%CC%81.png" alt="Daniela Torp">
+      </a>
+
+      <nav class="nav">
+        <a href="#uvod">Úvod</a>
+        <a href="#o-mne">Kdo je Daniela</a>
+        <div class="drop">
+          <span>Workshopy</span>
+          <div class="dropdown-menu">
+            <a href="workshopy/umeni-potesit-zenu.html">Umění potěšit ženu</a>
+            <a href="workshopy/umeni-potesit-muze.html">Umění potěšit muže</a>
+            <a href="workshopy/jen-pro-pary.html">Jen pro páry</a>
+            <a href="workshopy/tajemstvi-panevniho-dna.html">Tajemství pánevního dna</a>
+            <a href="workshopy/byla-jsem-tehotna-ale.html">Byla jsem těhotná, ale...</a>
+            <a href="workshopy/porod-jako-jistota.html">Porod jako jistota</a>
+            <a href="workshopy/matka-a-dcera.html">Matka a dcera</a>
+            <a href="workshopy.html" style="font-weight: 700; color: var(--color-primary);">Všechny workshopy ➜</a>
+          </div>
+        </div>
+        <a href="osobni-konzultace.html">Osobní konzultace</a>
+        <a href="6-piliru-intimity/index.html">6 pilířů intimity</a>
+        <a href="#kontakt">Kontakt</a>
+        <span class="flag">🇨🇿 CZ</span>
+      </nav>
+
+      <button class="mobile-menu-btn" onclick="toggleMobileNav()">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="uvod">
+    <div class="intro">
+      <h1>Daniela Torp – Intimita v souvislostech</h1>
+      <p>Koučka v oblasti intimity a sexuality, lektorka a terapeutka. Pomáhám jednotlivcům i párům objevovat hloubku jejich vztahů, porozumět vlastnímu tělu a žít naplňující život.</p>
+
+      <div class="dates">
+        <h3>Aktuální termíny workshopů</h3>
+        <div class="dates-list" id="dates-list">
+          <div><button type="button" onclick="prefillSubject('Zájem o workshop: Umění potěšit ženu')">15. března – Umění potěšit ženu (Praha)</button></div>
+          <div><button type="button" onclick="prefillSubject('Zájem o workshop: Umění potěšit muže')">22. března – Umění potěšit muže (Praha)</button></div>
+          <div><button type="button" onclick="prefillSubject('Zájem o workshop: Jen pro páry')">5. dubna – Jen pro páry (Praha)</button></div>
+          <div><button type="button" onclick="prefillSubject('Zájem o workshop: Tajemství pánevního dna')">18. dubna – Tajemství pánevního dna</button></div>
+        </div>
+      </div>
+
+      <a class="button primary" href="#kontakt">Napište mi ➜</a>
+    </div>
+  </section>
+
+  <!-- 6 PILÍŘŮ INTIMITY -->
+  <section class="wrap" id="pilire">
+    <h2>6 pilířů intimity</h2>
+    <p class="section-intro">Intimita nás provází celým životem. Každá životní etapa přináší své vlastní výzvy, proměny i krásy.</p>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <span class="pillar-num">1. Pilíř</span>
+        <h3>Párová intimita a vztah k vlastnímu tělu</h3>
+        <p>Prohloubení vzájemného porozumění, probuzení touhy a vytvoření bezpečného prostoru pro otevřenou komunikaci v páru.</p>
+        <button class="pillar-btn" onclick="openGenericModal('Párová intimita', 'Konzultace zaměřené na harmonizaci vztahu, překonání ostychu a obnovení hluboké blízkosti.');">Více informací ➜</button>
+      </div>
+
+      <div class="pillar-card">
+        <span class="pillar-num">2. Pilíř</span>
+        <h3>Intimita v těhotenství a při porodu</h3>
+        <p>Jak zůstat ve spojení se svým tělem i partnerem během těhotenství a připravit se na porod v důvěře a klidu.</p>
+        <button class="pillar-btn" onclick="openGenericModal('Těhotenství a porod', 'Podpora pro nastávající maminky i páry během očekávání nového života.');">Více informací ➜</button>
+      </div>
+
+      <div class="pillar-card">
+        <span class="pillar-num">3. Pilíř</span>
+        <h3>Intimita s miminkem a nová rodina</h3>
+        <p>Proměna partnerského vztahu v rodičovství, hledání nové rovnováhy a udržení partnerské jiskry po narození dítěte.</p>
+        <button class="pillar-btn" onclick="openGenericModal('Intimita s miminkem', 'Jak zvládnout šestinedělí a první měsíce s láskou a vzájemnou oporou.');">Více informací ➜</button>
+      </div>
+
+      <div class="pillar-card">
+        <span class="pillar-num">4. Pilíř</span>
+        <h3>Intimita u dětí a dospívajících</h3>
+        <p>Zdravá komunikace o těle, hranicích a intimitě v rodině. Jak mluvit s dětmi otevřeně a s respektem.</p>
+        <button class="pillar-btn" onclick="openGenericModal('Děti a dospívající', 'Osvěta a rady pro rodiče, jak budovat důvěru a zdravý vztah k intimitě.');">Více informací ➜</button>
+      </div>
+
+      <div class="pillar-card">
+        <span class="pillar-num">5. Pilíř</span>
+        <h3>Intimita ve zralém věku</h3>
+        <p>Zralost přináší novou hloubku, uvolnění a svobodu. Menopauza, změny v těle a nová kvalita prožívání.</p>
+        <button class="pillar-btn" onclick="openGenericModal('Zralý věk', 'Oslava zralosti, sebepřijetí a nová dimenze intimního života.');">Více informací ➜</button>
+      </div>
+
+      <div class="pillar-card">
+        <span class="pillar-num">6. Pilíř</span>
+        <h3>Intimita v umírání a odcházení</h3>
+        <p>Poslední a nejhlubší doteky života. Doprovázení, přijetí zranitelnosti a láska až do konce.</p>
+        <button class="pillar-btn" onclick="openGenericModal('Intimita v umírání', 'Citlivé provázení tématem ztráty, odcházení a hluboké lidské blízkosti.');">Více informací ➜</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- O MNĚ -->
+  <section class="wrap" id="o-mne">
+    <div class="about-box">
+      <img class="about-img" src="https://www.danielatorp.cz/wp-content/uploads/2020/05/untitled-design-7.jpg" alt="Daniela Torp">
+      <div class="about-text">
+        <h3>Kdo je Daniela Torp</h3>
+        <p>Jsem lektorka, terapeutka a koučka v oblasti intimity a sexuality. Už mnoho let provázím ženy, muže i páry na cestě k hlubšímu porozumění sobě samým i svým partnerům.</p>
+        <p>Věřím, že intimita není pouze fyzický akt, ale celostní jazyk těla a duše, který ovlivňuje naše sebevědomí, zdraví i vztahy v rodině.</p>
+        <button class="button primary" onclick="prefillSubject('Dotaz pro Danielu')">Napište mi dotaz ➜</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKSHOPY -->
+  <section class="wrap" id="workshopy">
+    <h2>Workshopy</h2>
+    <p class="section-intro">Praktické, bezpečné a hluboké workshopy pro jednotlivce i páry.</p>
+
+    <div class="workshops-grid">
+      <div class="ws-card">
+        <img class="ws-img" src="https://www.danielatorp.cz/wp-content/uploads/2020/03/2-1024x1024.jpg" alt="Umění potěšit ženu">
+        <div class="ws-content">
+          <h3>Umění potěšit ženu</h3>
+          <p>Workshop pro muže, kteří chtějí porozumět ženské sexualitě, touze a tělu s lehkostí a jistotou.</p>
+          <div class="ws-btn-row">
+            <a class="pillar-btn" href="workshopy/umeni-potesit-zenu.html">Detail workshopu ➜</a>
+            <button class="button primary" style="padding: 6px 14px; font-size: 11.5px;" onclick="prefillSubject('Přihláška: Umění potěšit ženu')">Přihlásit se</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ws-card">
+        <img class="ws-img" src="https://www.danielatorp.cz/wp-content/uploads/2020/03/9-1024x1024.jpg" alt="Umění potěšit muže">
+        <div class="ws-content">
+          <h3>Umění potěšit muže</h3>
+          <p>Workshop pro ženy o mužském vnímání, touze a dotecích, které otevírají srdce i vášeň.</p>
+          <div class="ws-btn-row">
+            <a class="pillar-btn" href="workshopy/umeni-potesit-muze.html">Detail workshopu ➜</a>
+            <button class="button primary" style="padding: 6px 14px; font-size: 11.5px;" onclick="prefillSubject('Přihláška: Umění potěšit muže')">Přihlásit se</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ws-card">
+        <img class="ws-img" src="https://www.danielatorp.cz/wp-content/uploads/2020/03/7-1024x1024.jpg" alt="Jen pro páry">
+        <div class="ws-content">
+          <h3>Jen pro páry</h3>
+          <p>Společný prostor pro partnery, kde se naučíte prohlubovat vzájemnou intimitu a důvěru.</p>
+          <div class="ws-btn-row">
+            <a class="pillar-btn" href="workshopy/jen-pro-pary.html">Detail workshopu ➜</a>
+            <button class="button primary" style="padding: 6px 14px; font-size: 11.5px;" onclick="prefillSubject('Přihláška: Jen pro páry')">Přihlásit se</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 35px;">
+      <a class="button primary" href="workshopy.html">Zobrazit všech 9 workshopů ➜</a>
+    </div>
+  </section>
+
+  <!-- KONTAKTNÍ FORMULÁŘ -->
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <h2>Napište mi</h2>
+      <p class="section-intro">Máte otázku, zájem o konzultaci nebo workshop? Ráda se vám budu věnovat.</p>
+
+      <form class="form" id="contactForm" onsubmit="handleFormSubmit(event)">
+        <div class="field">
+          <label for="formName">Jméno a příjmení <span style="color:red">*</span></label>
+          <input type="text" required placeholder="Jan Novák" id="formName">
+        </div>
+        <div class="field">
+          <label for="formEmail">Váš e-mail <span style="color:red">*</span></label>
+          <input type="email" required placeholder="jan.novak@priklad.cz" id="formEmail">
+        </div>
+        <div class="field full">
+          <label for="formSubject">Předmět <span style="color:red">*</span></label>
+          <input type="text" required placeholder="Konzultace, workshop, dotaz" id="formSubject">
+        </div>
+        <div class="field full">
+          <label for="formMessage">Zpráva <span style="color:red">*</span></label>
+          <textarea required placeholder="Napište svou zprávu..." id="formMessage"></textarea>
+        </div>
+
+        <div class="form-bottom">
+          <div class="notice">
+            Odesláním formuláře souhlasíte se zpracováním osobních údajů v souladu s GDPR.
+          </div>
+          <button class="send" id="sendBtn" type="submit">Odeslat zprávu ➜</button>
+        </div>
+      </form>
+
+      <div class="success-box" id="successBox">
+        <h3>Děkuji za vaši zprávu!</h3>
+        <p>Zpráva byla úspěšně odeslána. Daniela se vám brzy ozve.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h4>Kontakty</h4>
+          <a href="#uvod">Úvod</a>
+          <a href="#o-mne">Kdo je Daniela</a>
+          <a href="osobni-konzultace.html">Osobní konzultace</a>
+          <a href="#kontakt">Napište mi</a>
+        </div>
+        <div>
+          <h4>Workshopy</h4>
+          <a href="workshopy/umeni-potesit-zenu.html">Umění potěšit ženu</a>
+          <a href="workshopy/umeni-potesit-muze.html">Umění potěšit muže</a>
+          <a href="workshopy/jen-pro-pary.html">Jen pro páry</a>
+          <a href="workshopy/tajemstvi-panevniho-dna.html">Tajemství pánevního dna</a>
+          <a href="workshopy.html" style="color: var(--color-primary); font-weight: 500;">Všech 9 workshopů ➜</a>
+        </div>
+        <div>
+          <h4>6 pilířů intimity</h4>
+          <a href="6-piliru-intimity/index.html">1. Párová intimita</a>
+          <a href="6-piliru-intimity/index.html">2. Těhotenství a porod</a>
+          <a href="6-piliru-intimity/index.html">3. Intimita s miminkem</a>
+          <a href="6-piliru-intimity/index.html">4. Děti a dospívající</a>
+          <a href="6-piliru-intimity/index.html">5. Zralý věk</a>
+          <a href="6-piliru-intimity/index.html">6. Umírání</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Všechna práva vyhrazena | Daniela Torp</div>
+        <div class="social">
+          <a href="https://facebook.com/danielatorp" target="_blank">f</a>
+          <a href="https://instagram.com/intimitycoachdanielatorp/" target="_blank">◎</a>
+          <a href="https://youtube.com" target="_blank">◉</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DIALOG -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-card">
+      <span class="modal-close" onclick="closeModalDirect()">&times;</span>
+      <h3 class="modal-title" id="modalTitle">Informace</h3>
+      <div class="modal-body" id="modalContent">Obsah</div>
+      <div style="text-align: right;">
+        <button class="button primary" onclick="closeModalDirect()">Zavřít</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwiptZDdNVNSavoyJeHCvoc7XxOSTG0yg_K5Z-Si81Up_4CSBo5AJUUOuMYLNh2eT3h/exec';
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const sendBtn = document.getElementById('sendBtn') || document.querySelector('.send');
+      const originalText = sendBtn ? sendBtn.innerHTML : 'Odeslat zprávu ➜';
+
+      if (sendBtn) {
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = 'Odesílám...';
+      }
+
+      const name = document.getElementById('formName').value.trim();
+      const email = document.getElementById('formEmail').value.trim();
+      const subject = document.getElementById('formSubject') ? document.getElementById('formSubject').value.trim() : '';
+      const message = document.getElementById('formMessage').value.trim();
+
+      const formattedMessage = subject ? `[Předmět: ${subject}]\n\n${message}` : message;
+
+      const payload = {
+        type: 'contact',
+        lang: 'CZ',
+        name: name,
+        email: email,
+        subject: subject,
+        message: formattedMessage
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const formEl = document.getElementById('contactForm');
+        if (formEl) formEl.style.display = 'none';
+        const successEl = document.getElementById('successBox');
+        if (successEl) {
+          successEl.style.display = 'block';
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } catch (err) {
+        console.error('Chyba při odesílání formuláře:', err);
+        alert('Při odesílání zprávy došlo k chybě. Zkuste to prosím znovu.');
+        if (sendBtn) {
+          sendBtn.disabled = false;
+          sendBtn.innerHTML = originalText;
+        }
+      }
+    }
+
+    function prefillSubject(subj) {
+      const el = document.getElementById('formSubject');
+      if (el) {
+        el.value = subj;
+        document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+        el.focus();
+      }
+    }
+
+    function openGenericModal(title, text) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalContent').innerText = text;
+      document.getElementById('modalOverlay').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'modalOverlay') closeModalDirect();
+    }
+
+    function closeModalDirect() {
+      document.getElementById('modalOverlay').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function toggleMobileNav() {
+      const nav = document.querySelector('.nav');
+      nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModalDirect();
+    });
+  </script>
+</body>
+</html>
