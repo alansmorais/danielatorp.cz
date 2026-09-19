@@ -2,77 +2,757 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>6 pilířů intimity | Daniela Torp</title>
+  <meta name="description" content="Intimita v souvislostech - Daniela Torp">
+  <link rel="icon" href="../images/cropped-favicona-32x32.png" sizes="32x32">
+  <link rel="icon" href="../images/cropped-favicona-192x192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="../images/cropped-favicona-180x180.png">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-    :root { --primary: #ee5a7a; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Roboto', Arial, sans-serif; color: #222; font-weight: 300; line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
-    header { height: 90px; background: #fff; display: flex; align-items: center; padding: 0 5%; border-bottom: 1px solid #eee; }
-    .wrap { max-width: 1000px; margin: auto; padding: 0 20px; }
-    .logo { width: 220px; }
-    nav { margin-left: auto; display: flex; gap: 20px; font-size: 13px; }
-    nav a:hover { color: var(--primary); }
-    .hero { background: #fff5f7; padding: 60px 20px; text-align: center; }
-    h1 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
-    .pillar-section { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 30px; margin: 30px 0; }
-    h2 { font-size: 20px; font-weight: 600; color: #111; margin-bottom: 10px; }
-    p { font-size: 14px; color: #444; line-height: 1.7; }
-    footer { background: #1e1e1e; color: #aaa; padding: 40px 20px; font-size: 13px; text-align: center; }
+    /* =========================================
+       1. GLOBAL RESET & DESIGN SYSTEM
+       ========================================= */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
+
+    :root {
+      --font-main: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      --color-text: #1d1d1f;
+      --color-text-muted: #5e5e64;
+      --color-primary: #ee5a7a;
+      --color-primary-dark: #d63d60;
+      --color-primary-light: #fff3f6;
+      --color-border: #e6e6eb;
+      --color-card-bg: #ffffff;
+      --color-page-bg: #ffffff;
+      --container-max-width: 1200px;
+      --border-radius-sm: 8px;
+      --border-radius-md: 12px;
+      --border-radius-lg: 20px;
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--color-text);
+      font-weight: 300;
+      background: var(--color-page-bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a, button {
+      color: inherit;
+      text-decoration: none;
+      font-family: inherit;
+      transition: all var(--transition-fast);
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--container-max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* =========================================
+       2. STANDARDIZED HEADER & NAVIGATION
+       ========================================= */
+    header {
+      height: 100px;
+      background: rgba(255, 255, 255, 0.98);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+    }
+
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      margin-right: auto;
+    }
+
+    .logo {
+      width: 325px;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #111;
+    }
+
+    .nav > a,
+    .nav .drop-toggle {
+      color: inherit;
+      padding: 10px 0;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 400;
+      font-family: inherit;
+    }
+
+    .nav a:hover,
+    .nav .drop:hover > .drop-toggle,
+    .nav .drop:focus-within > .drop-toggle {
+      color: var(--color-primary);
+    }
+
+    .nav .drop {
+      position: relative;
+      padding: 10px 0;
+    }
+
+    .drop-arrow {
+      font-size: 8px;
+      margin-left: 5px;
+      transition: transform var(--transition-fast);
+      display: inline-block;
+    }
+
+    .nav .drop:hover .drop-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% - 4px);
+      left: -12px;
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      padding: 8px 0;
+      min-width: 260px;
+      z-index: 1000;
+    }
+
+    .nav .drop:hover .dropdown-menu {
+      display: block;
+      animation: navFade 0.2s ease-out forwards;
+    }
+
+    @keyframes navFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dropdown-menu a,
+    .dropdown-menu button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: #3e3e42;
+      border-bottom: 1px solid #f8f8f8;
+      background: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      cursor: pointer;
+    }
+
+    .dropdown-menu a:last-child,
+    .dropdown-menu button:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu button:hover {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      padding-left: 22px;
+    }
+
+    .flag {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 10px;
+      cursor: default;
+    }
+
+    .flag img {
+      width: 20px;
+      height: 14px;
+      object-fit: cover;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      font-size: 26px;
+      padding: 6px 10px;
+      color: #111;
+      line-height: 1;
+      border-radius: var(--border-radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* =========================================
+       3. HERO SECTION
+       ========================================= */
+    .page-hero {
+      text-align: center;
+      padding: 80px 20px 90px;
+      background: linear-gradient(90deg, #f9dbe3 0%, #f8d7e1 31%, #fff 49%, #d7f0f3 71%, #d5eff2 100%);
+      position: relative;
+    }
+
+    .page-hero h1 {
+      font-size: 38px;
+      font-weight: 300;
+      margin-bottom: 18px;
+      color: #111;
+    }
+
+    .page-hero p {
+      max-width: 820px;
+      margin: 0 auto 14px;
+      font-size: 16px;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    /* =========================================
+       4. PILLARS CONTENT
+       ========================================= */
+    .pillar-section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .pillar-section:nth-child(even) {
+      background: #fafafa;
+    }
+
+    .pillar-row {
+      display: flex;
+      align-items: center;
+      gap: 65px;
+      max-width: 1050px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .pillar-section:nth-child(even) .pillar-row {
+      flex-direction: row-reverse;
+    }
+
+    .pillar-image {
+      flex: 0 0 240px;
+      text-align: center;
+    }
+
+    .pillar-image img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.06));
+    }
+
+    .pillar-content {
+      flex: 1;
+    }
+
+    .svg-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--color-primary);
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+
+    .pillar-content h2 {
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: #111;
+      line-height: 1.35;
+    }
+
+    .pillar-content p {
+      font-size: 15.5px;
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #111;
+      border-radius: 30px;
+      padding: 10px 24px;
+      background: #fff;
+      font-size: 12.5px;
+      font-weight: 400;
+      color: #111;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .button:hover {
+      background: #111;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* =========================================
+       5. FOOTER
+       ========================================= */
+    footer {
+      padding: 65px 8% 30px;
+      text-align: center;
+      border-top: 1px solid var(--color-border);
+      background: #fff;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.4fr;
+      gap: 55px;
+      max-width: 1050px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .footer-grid h4 {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0 0 15px;
+      color: #111;
+    }
+
+    .footer-grid a,
+    .footer-grid button {
+      display: block;
+      color: #7e7978;
+      font-size: 13px;
+      line-height: 1.95;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .footer-grid a:hover,
+    .footer-grid button:hover {
+      color: var(--color-primary);
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      font-size: 19px;
+      color: #999;
+      margin: 85px 0 16px;
+    }
+
+    .social a:hover {
+      color: #111;
+    }
+
+    .copyright {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    /* =========================================
+       6. RESPONSIVE
+       ========================================= */
+    @media (max-width: 991px) {
+      header {
+        height: 80px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px 24px 30px;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid var(--color-border);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        gap: 0;
+        align-items: stretch;
+      }
+
+      .nav.is-open {
+        display: flex;
+      }
+
+      .nav > a,
+      .nav .drop-toggle {
+        width: 100%;
+        padding: 14px 0;
+        font-size: 15px;
+        border-bottom: 1px solid #f2f2f5;
+        justify-content: space-between;
+      }
+
+      .nav .drop {
+        padding: 0;
+        width: 100%;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: #fbfbfc;
+        padding: 4px 0 10px 14px;
+        border-left: 2px solid var(--color-primary);
+        margin: 4px 0 10px;
+      }
+
+      .dropdown-menu.is-open {
+        display: block;
+      }
+
+      .dropdown-menu a,
+      .dropdown-menu button {
+        padding: 10px 0;
+        font-size: 13.5px;
+        border-bottom: 1px dashed #ececed;
+      }
+
+      .flag {
+        padding: 16px 0 0;
+        margin-left: 0;
+      }
+
+      .pillar-row,
+      .pillar-section:nth-child(even) .pillar-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 35px;
+      }
+
+      .svg-divider {
+        margin: 0 auto 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-hero h1 {
+        font-size: 28px;
+      }
+      .pillar-content h2 {
+        font-size: 22px;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ================= HEADER ================= -->
   <header>
-    <div class="wrap" style="width: 100%; display: flex; align-items: center;">
-      <a href="../index.html"><img class="logo" src="https://www.danielatorp.cz/wp-content/uploads/2020/02/logo_perem_bez_pozadi%CC%81.png" alt="Daniela Torp"></a>
-      <nav>
-        <a href="../index.html">Úvod</a>
-        <a href="../workshopy.html">Workshopy</a>
-        <a href="../osobni-konzultace.html">Osobní konzultace</a>
-        <a href="index.html" style="color: var(--primary); font-weight: 700;">6 pilířů intimity</a>
+    <div class="wrap">
+      <a href="../index.html" class="logo-link">
+        <img class="logo" src="../images/logo_perem_bez_pozadi%CC%81.png" alt="Daniela Torp">
+      </a>
+      
+      <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="mainNav">
+        <a href="../index.html">Domů</a>
+        
+        <div class="drop">
+          <button type="button" class="drop-toggle" onclick="toggleDropdown(this)">
+            6 pilířů intimity <span class="drop-arrow">▼</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="#pilar-1">1. Partnerská intimita a vlastní tělo</a>
+            <a href="#pilar-2">2. Těhotenství a porod</a>
+            <a href="#pilar-3">3. Intimita s miminkem</a>
+            <a href="#pilar-4">4. Děti a dospívající</a>
+            <a href="#pilar-5">5. Intimita ve zralém věku</a>
+            <a href="#pilar-6">6. Intimita ve smrti</a>
+          </div>
+        </div>
+
+        <a href="../index.html#om-daniela">Kdo je Daniela</a>
+        
+        <div class="drop">
+          <button type="button" class="drop-toggle" onclick="toggleDropdown(this)">
+            Workshopy <span class="drop-arrow">▼</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="../workshops/umeni-potesit-zenu.html">Umění potěšit ženu</a>
+            <a href="../workshops/umeni-potesit-muze.html">Umění potěšit muže</a>
+            <a href="../workshops/jen-pro-pary.html">Umění potěšit (pro páry)</a>
+            <a href="../workshops/tajemstvi-panevniho-dna.html">Tajemství pánevního dna</a>
+            <a href="../workshops/byla-jsem-tehotna-ale.html">Byla jsem těhotná, ale…</a>
+            <a href="../workshops/porod-jako-jistota.html">Porod jako jistota</a>
+            <a href="../workshops/matka-a-dcera.html">Matka a dcera</a>
+            <a href="../workshops/Hraj-si-se-mnou.html">Hraj si se mnou</a>
+            <a href="../workshops/zenska-esence-no.html">Ženská esence a životní síla</a>
+            <a href="../workshops.html" style="font-weight:500;color:var(--color-primary);">Zobrazit všech 9 workshopů ➜</a>
+          </div>
+        </div>
+
+        <a href="../konsultasjon.html">Osobní konzultace</a>
+        <a href="../blog.html">Blog</a>
         <a href="../index.html#kontakt">Kontakt</a>
+        <span class="flag"><img src="https://flagcdn.com/w20/cz.png" width="20" alt="Česky"></span>
       </nav>
     </div>
   </header>
 
-  <div class="hero">
+  <!-- ================= HERO ================= -->
+  <section class="page-hero">
     <div class="wrap">
-      <h1>6 pilířů intimity v životě člověka</h1>
-      <p>Komplexní průvodce intimitou od zrození, přes partnerství a rodičovství, až po zralý věk.</p>
+      <h1>6 pilířů intimity</h1>
+      <p>Intimita je onen příjemný pocit bezpečí a důvěry mezi lidmi. Intimita nevzniká sama od sebe, je třeba na ní pracovat. Provází nás všemi fázemi života.</p>
+      <p>Z mého pohledu intimita spočívá na 6 základních pilířích. Při konzultacích s klienty se zaměřujeme především na intimitu ve vztahu k vlastnímu tělu. Vše začíná a končí láskou k sobě samému. Když mám rád sám sebe, mohu milovat druhé. Když mám soucit se sebou, mohu ho projevovat i ostatním v různých životních etapách.</p>
+      <p><strong>Respekt, láska a soucit.</strong></p>
     </div>
-  </div>
+  </section>
 
-  <main class="wrap" style="padding: 40px 20px;">
-    <div class="pillar-section" id="pilar-1">
-      <h2>1. Párová intimita a vztah k vlastnímu tělu</h2>
-      <p>Základní kámen každého vztahu. Schopnost vnímat a ctít své tělo je předpokladem pro zdravou intimitu s partnerem.</p>
-    </div>
-    <div class="pillar-section" id="pilar-2">
-      <h2>2. Intimita v těhotenství a při porodu</h2>
-      <p>Období hlubokých tělesných i emočních proměn. Vědomá příprava ženy a podpora partnera tvoří základ bezpečného zrození.</p>
-    </div>
-    <div class="pillar-section" id="pilar-3">
-      <h2>3. Intimita s miminkem a nová rodina</h2>
-      <p>Narození dítěte přináší novou dynamiku. Jak pečovat o děťátko a zároveň neztratit vzájemné pouto mezi partnery.</p>
-    </div>
-    <div class="pillar-section" id="pilar-4">
-      <h2>4. Intimita u dětí a dospívajících</h2>
-      <p>Výchova k intimitě, vnímání vlastních hranic a respektu. Jak provázet dospívající bezpečně a bez tabu.</p>
-    </div>
-    <div class="pillar-section" id="pilar-5">
-      <h2>5. Intimita ve zralém věku</h2>
-      <p>Zralost otevírá prostor pro novou hloubku, uvolnění z výkonu a hluboké propojení srdcí i těl.</p>
-    </div>
-    <div class="pillar-section" id="pilar-6">
-      <h2>6. Intimita v umírání</h2>
-      <p>Doprovázení blízkých na konci jejich cesty. Blízkost, dotek a láska v okamžicích odcházení.</p>
-    </div>
+  <main id="pilarer">
+    <!-- PILAR 1 -->
+    <section class="pillar-section" id="pilar-1">
+      <div class="pillar-row">
+        <div class="pillar-image">
+          <img src="../images/1male_komplet_na_web.png" width="220" height="220" alt="Partnerská intimita">
+        </div>
+        <div class="pillar-content">
+          <div class="svg-divider"></div>
+          <h2>1. Partnerská intimita, vztah k vlastnímu tělu</h2>
+          <p>Často zkrátka nerozumíme sami sobě. Ani jeden druhému. Přesto všichni toužíme po tom samém – milovat a být milováni. Užívat si partnerský vztah i svou sexualitu. Plně přijmout druhého však můžeme až tehdy, když plně přijmeme sami sebe. Láska k vlastnímu tělu bývá často to nejtěžší. Znamená to přijmout své tělo přesně takové, jaké je. Pracuji s páry individuálně i společně.</p>
+          <a href="../index.html#kontakt" class="button">Objednat konzultaci</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILAR 2 -->
+    <section class="pillar-section" id="pilar-2">
+      <div class="pillar-row">
+        <div class="pillar-image">
+          <img src="../images/2male%CC%81_komplet_na_web.png" width="220" height="220" alt="Těhotenství">
+        </div>
+        <div class="pillar-content">
+          <div class="svg-divider"></div>
+          <h2>2. Intimita v těhotenství a při porodu</h2>
+          <p>Máte ráda své tělo takové, jaké je. Zvykla jste si na něj a pečujete o něj. Náhle, vlivem těhotenství, se začíná nekontrolovaně měnit. Mění se natolik, že se v něm mnohdy sama nepoznáváte. Reaguje jinak na dotek, pohyb i intimitu. Udržet si partnerskou intimitu během těhotenství bývá velkou výzvou. Jsem tu, abych vám pomohla. V bezpečném prostředí vás provedu světem intimity v tomto výjimečném období.</p>
+          <a href="../index.html#kontakt" class="button">Objednat konzultaci</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILAR 3 -->
+    <section class="pillar-section" id="pilar-3">
+      <div class="pillar-row">
+        <div class="pillar-image">
+          <img src="../images/3male%CC%81_komplet_na_web.png" width="220" height="220" alt="Mateřství">
+        </div>
+        <div class="pillar-content">
+          <div class="svg-divider"></div>
+          <h2>3. Intimita v mateřství a rodinná pouta</h2>
+          <p>Vytoužené miminko je na světě. Jste šťastnými rodiči, ale váš každodenní svět se obrátil vzhůru nohama. Partnerská intimita náhle ustoupila do pozadí. Jak ji znovu obnovit? Jak zvládnout tuto zcela novou situaci společně? Sama jsem si tím prošla a vím, co skutečně pomáhá. Stačí jen společná vůle udělat krok ke změně.</p>
+          <a href="../index.html#kontakt" class="button">Objednat konzultaci</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILAR 4 -->
+    <section class="pillar-section" id="pilar-4">
+      <div class="pillar-row">
+        <div class="pillar-image">
+          <img src="../images/4male%CC%81_komplet_na_web.png" width="220" height="220" alt="Děti a dospívající">
+        </div>
+        <div class="pillar-content">
+          <div class="svg-divider"></div>
+          <h2>4. Intimita u dětí a dospívajících</h2>
+          <p>Během prvních 18 měsíců si dítě začíná utvářet intimní vztah ke svému tělu. Děsíte se prvních otázek o těle a sexualitě? Jste bezradní, když vaše dítě zkoumá své intimní partie? Máte obrovskou moc pozitivně ovlivnit vztah vašeho dítěte k jeho tělu i to, jakou první intimní zkušenost bude mít vaše dcera. Nejprve společně zpracujeme vaše obavy a připravíme vás na období zvídavých otázek s klidem a porozuměním.</p>
+          <a href="../index.html#kontakt" class="button">Objednat konzultaci</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILAR 5 -->
+    <section class="pillar-section" id="pilar-5">
+      <div class="pillar-row">
+        <div class="pillar-image">
+          <img src="../images/5male%CC%81_komplet_na_web.png" width="220" height="220" alt="Zralý věk">
+        </div>
+        <div class="pillar-content">
+          <div class="svg-divider"></div>
+          <h2>5. Intimita ve zralém věku</h2>
+          <p>Žijete v dlouhodobém vztahu a myslíte si, že už o sobě nemůžete nic nového zjistit? Ráda vás vyvedu z omylu. Budete překvapeni, kolik potěšení můžete znovu prožívat a jak se do sebe můžete zamilovat i po 20 letech společného života. Získáte bohatou inspiraci pro svůj intimní život. A pokud jste po rozvodu či rozchodu sami a nevíte, jak navazovat nová spojení, prozkoumáme vaše vnitřní silné stránky. Zjistíte, jak plný a bohatý může být život i ve zralém věku.</p>
+          <a href="../index.html#kontakt" class="button">Objednat konzultaci</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILAR 6 -->
+    <section class="pillar-section" id="pilar-6">
+      <div class="pillar-row">
+        <div class="pillar-image">
+          <img src="../images/6male%CC%81_komplet_na_web.png" width="220" height="220" alt="Smrt">
+        </div>
+        <div class="pillar-content">
+          <div class="svg-divider"></div>
+          <h2>6. Intimita ve smrti a odcházení</h2>
+          <p>Vše má svůj konec. I život. Záleží jen na nás, zda dokážeme doprovázet své nejbližší na jejich poslední cestě s hlubokou důstojností, klidem a lidskou úctou.</p>
+          <a href="../index.html#kontakt" class="button">Objednat konzultaci</a>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- ================= FOOTER ================= -->
   <footer>
-    <p>© 2026 Daniela Torp | <a href="../index.html" style="color:#fff;">Zpět na úvod</a></p>
+    <div class="footer-grid">
+      <!-- Col 1: Kontakt -->
+      <div>
+        <h4>Kontakt</h4>
+        <a href="../index.html">Domů</a>
+        <a href="../index.html#om-daniela">Kdo je Daniela</a>
+        <a href="../index.html#om-daniela">Daniela v médiích</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+      </div>
+
+      <!-- Col 2: Workshopy -->
+      <div>
+        <h4>Workshopy</h4>
+        <a href="../workshops/umeni-potesit-zenu.html">Umění potěšit ženu</a>
+        <a href="../workshops/umeni-potesit-muze.html">Umění potěšit muže</a>
+        <a href="../workshops/jen-pro-pary.html">Umění potěšit (pro páry)</a>
+        <a href="../workshops/tajemstvi-panevniho-dna.html">Tajemství pánevního dna</a>
+        <a href="../workshops/byla-jsem-tehotna-ale.html">Byla jsem těhotná, ale…</a>
+        <a href="../workshops/porod-jako-jistota.html">Porod jako jistota</a>
+        <a href="../workshops/matka-a-dcera.html">Matka a dcera</a>
+        <a href="../workshops/Hraj-si-se-mnou.html">Hraj si se mnou</a>
+        <a href="../workshops/zenska-esence-no.html">Ženská esence a životní síla</a>
+        <a href="../workshops.html" style="color:var(--color-primary);font-weight:500;">Zobrazit všech 9 workshopů ➜</a>
+      </div>
+
+      <!-- Col 3: Pilíře -->
+      <div>
+        <h4>Konzultace / 6 pilířů intimity</h4>
+        <a href="../konsultasjon.html">Osobní konzultace</a>
+        <a href="#pilar-1">Partnerská intimita a vztah k tělu</a>
+        <a href="#pilar-2">Intimita v těhotenství a při porodu</a>
+        <a href="#pilar-3">Intimita v mateřství</a>
+        <a href="#pilar-4">Intimita u dětí a mládeže</a>
+        <a href="#pilar-5">Intimita ve zralém věku</a>
+        <a href="#pilar-6">Intimita ve smrti</a>
+      </div>
+    </div>
+
+    <div class="social">
+      <a href="https://facebook.com/danielatorp" target="_blank" rel="noopener">f</a>
+      <a href="https://instagram.com/intimitycoachdanielatorp/" target="_blank" rel="noopener">◎</a>
+      <a href="https://youtube.com" target="_blank" rel="noopener">◉</a>
+    </div>
+    <div class="copyright">© 2026 Všechna práva vyhrazena | Daniela Torp</div>
   </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    function toggleMobileNav() {
+      const nav = document.getElementById('mainNav');
+      const btn = document.querySelector('.mobile-menu-btn');
+      const isOpen = nav.classList.toggle('is-open');
+      btn.innerText = isOpen ? '✕' : '☰';
+      btn.setAttribute('aria-expanded', isOpen);
+    }
+
+    function toggleDropdown(btn) {
+      if (window.innerWidth < 992) {
+        const menu = btn.nextElementSibling;
+        const arrow = btn.querySelector('.drop-arrow');
+        const isOpen = menu.classList.toggle('is-open');
+        if (arrow) arrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0)';
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 992) {
+        const nav = document.getElementById('mainNav');
+        const btn = document.querySelector('.mobile-menu-btn');
+        if (nav) nav.classList.remove('is-open');
+        if (btn) {
+          btn.innerText = '☰';
+          btn.setAttribute('aria-expanded', 'false');
+        }
+        document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('is-open'));
+        document.querySelectorAll('.drop-arrow').forEach(a => a.style.transform = 'rotate(0)');
+      }
+    });
+  </script>
 </body>
 </html>
