@@ -803,52 +803,127 @@
 
         <h4 class="seasons-title">Čtyři letošní setkání:</h4>
 
-        <!-- Přehled 4 ročních období -->
-        <div class="seasons-grid">
-          
-          <!-- Imbolc -->
-          <div class="season-card">
-            <img src="https://www.danielatorp.cz/images/chatgpt-image-9.-1.-2026-14_29_46-2.png" alt="Imbolc">
-            <div class="season-card-body">
-              <h5>Imbolc</h5>
-              <span class="date">27. 2. – 1. 3. 2026</span>
-              <p><strong>Dětství a kořeny:</strong> Objevte svou hravou stránku, uzdravte zranění z dětství a pochopte, jak rodinné vztahy formují vaše přesvědčení. Navažte kontakt se svými kořeny a najděte emoční podporu pro výživu svého vnitřního dítěte.</p>
-            </div>
-          </div>
+ <!-- Přehled 4 ročních období -->
 
-          <!-- Beltane -->
-          <div class="season-card">
-            <img src="https://github.com/alansmorais/danielatorp.cz/blob/main/images/danc%CC%8Ca-fb-1.jpg?raw=true" alt="Beltane">
-            <div class="season-card-body">
-              <h5>Beltane</h5>
-              <span class="date">Jaro / začátek léta</span>
-              <p><strong>Dospívání a sebepoznání:</strong> Přijměte svou smyslnost, naučte se milovat sami sebe a nastavovat zdravé hranice. Setkejte se s výzvami dospívání, studem, vinou a hledáním identity. Naučte se umění souhlasu a úplného přijetí sebe sama.</p>
-            </div>
-          </div>
+<style>
+  .seasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
 
-          <!-- Lughnasad -->
-          <div class="season-card">
-            <img src="https://github.com/alansmorais/danielatorp.cz/blob/main/images/danc%CC%8Ca-fb-2.jpg?raw=true" alt="Lughnasad">
-            <div class="season-card-body">
-              <h5>Lughnasad</h5>
-              <span class="date">4. 7. – 5. 7. 2026</span>
-              <p><strong>Mateřství a vlastní síla:</strong> Přijměte své tělo, přijměte sílu touhy a dělohy a propusťte stará traumata. Vstupte do magie těhotenství, krásy porodu a umění vědomě tvořit.</p>
-            </div>
-          </div>
+  .season-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
 
-          <!-- Samhain -->
-          <div class="season-card">
-            <img src="https://github.com/alansmorais/danielatorp.cz/blob/main/images/danc%CC%8Ca-fb-3.jpg?raw=true" alt="Samhain">
-            <div class="season-card-body">
-              <h5>Samhain</h5>
-              <span class="date">16. 10. – 18. 10. 2026</span>
-              <p><strong>Moudrost a klid:</strong> Přijměte zrání, najděte klid ve své smyslové moudrosti a objevte krásu menopauzy. Obnovte kontakt se svou hlubokou intuicí a naučte se umění nesoudit.</p>
-            </div>
-          </div>
+  .season-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+  }
 
-        </div>
+  .season-card-body {
+    padding: 16px;
+  }
 
-      </div>
+  .season-card-body h5 {
+    margin: 0 0 8px;
+  }
+
+  .season-card-body .date {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .season-card-body p {
+    margin: 0;
+  }
+
+  /* Tablet */
+  @media (max-width: 991px) {
+    .seasons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .season-card img {
+      height: 220px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .seasons-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .season-card img {
+      height: 240px;
+    }
+  }
+</style>
+
+<div class="seasons-grid">
+
+  <!-- Imbolc -->
+  <div class="season-card">
+    <img src="https://www.danielatorp.cz/images/chatgpt-image-9.-1.-2026-14_29_46-2.png" alt="Imbolc">
+    <div class="season-card-body">
+      <h5>Imbolc</h5>
+      <span class="date">27. 2. – 1. 3. 2026</span>
+      <p>
+        <strong>Dětství a kořeny:</strong>
+        Objevte svou hravou stránku, uzdravte zranění z dětství a pochopte, jak rodinné vztahy formují vaše přesvědčení. Navažte kontakt se svými kořeny a najděte emoční podporu pro výživu svého vnitřního dítěte.
+      </p>
+    </div>
+  </div>
+
+  <!-- Beltane -->
+  <div class="season-card">
+    <img src="https://github.com/alansmorais/danielatorp.cz/blob/main/images/danc%CC%8Ca-fb-1.jpg?raw=true" alt="Beltane">
+    <div class="season-card-body">
+      <h5>Beltane</h5>
+      <span class="date">Jaro / začátek léta</span>
+      <p>
+        <strong>Dospívání a sebepoznání:</strong>
+        Přijměte svou smyslnost, naučte se milovat sami sebe a nastavovat zdravé hranice. Setkejte se s výzvami dospívání, studem, vinou a hledáním identity. Naučte se umění souhlasu a úplného přijetí sebe sama.
+      </p>
+    </div>
+  </div>
+
+  <!-- Lughnasad -->
+  <div class="season-card">
+    <img src="https://github.com/alansmorais/danielatorp.cz/blob/main/images/danc%CC%8Ca-fb-2.jpg?raw=true" alt="Lughnasad">
+    <div class="season-card-body">
+      <h5>Lughnasad</h5>
+      <span class="date">4. 7. – 5. 7. 2026</span>
+      <p>
+        <strong>Mateřství a vlastní síla:</strong>
+        Přijměte své tělo, přijměte sílu touhy a dělohy a propusťte stará traumata. Vstupte do magie těhotenství, krásy porodu a umění vědomě tvořit.
+      </p>
+    </div>
+  </div>
+
+  <!-- Samhain -->
+  <div class="season-card">
+    <img src="https://github.com/alansmorais/danielatorp.cz/blob/main/images/danc%CC%8Ca-fb-3.jpg?raw=true" alt="Samhain">
+    <div class="season-card-body">
+      <h5>Samhain</h5>
+      <span class="date">16. 10. – 18. 10. 2026</span>
+      <p>
+        <strong>Moudrost a klid:</strong>
+        Přijměte zrání, najděte klid ve své smyslové moudrosti a objevte krásu menopauzy. Obnovte kontakt se svou hlubokou intuicí a naučte se umění nesoudit.
+      </p>
+    </div>
+  </div>
+
+</div>
 
       <!-- Pravý sloupec -->
       <div class="workshop-right">
