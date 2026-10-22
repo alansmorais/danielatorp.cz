@@ -1496,7 +1496,11 @@
           <img class="portrait" src="images/untitled-design-7.jpg" alt="Daniela Torp">
           <div class="photo-buttons">
             <button type="button" class="button" onclick="openGenericModal('Více o Daniele', 'Daniela se věnuje somatické práci, intimitní terapii a partnerskému provázení více než 15 let. Skrze 6 pilířů intimity pomáhá lidem nacházet pocit bezpečí, sebeúcty a opravdové životní energie.')">Více o Daniele</button>
-            <button type="button" class="button" onclick="openGenericModal('Daniela v médiích', 'Vybrané podcasty a články:\n\n• Podcast Životní cesta: «Intimita začíná před zrcadlem»\n• Magazín Harmonie: «6 pilířů, které proměňují partnerství»\n• Vztahy a kultura: «Umění naslouchat beze slov»')">Média</button>
+            <button type="button" class="button" onclick="openGenericModal('Daniela v médiích', 'Vybrané podcasty a články:
+
+• Podcast Životní cesta: «Intimita začíná před zrcadlem»
+• Magazín Harmonie: «6 pilířů, které proměňují partnerství»
+• Vztahy a kultura: «Umění naslouchat beze slov»')">Média</button>
           </div>
         </div>
         
@@ -1927,7 +1931,7 @@
         sendBtn.innerHTML = 'Odesílám...';
       }
 
-      const formattedMessage = subject ? `[Předmět: ${subject}]\\n\\n${message}` : message;
+      const formattedMessage = subject ? `[Předmět: ${subject}]\n\n${message}` : message;
 
       const payload = {
         type: 'contact',
