@@ -12,413 +12,95 @@
        ========================================= */
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Roboto', Arial, sans-serif;
-      color: #080808;
-      font-weight: 300;
-      background: #fff;
-      line-height: 1.6;
-    }
-
-    a, button {
-      color: inherit;
-      text-decoration: none;
-      font-family: inherit;
-    }
-
-    button {
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .wrap {
-      max-width: 1344px;
-      margin: auto;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', Arial, sans-serif; color: #080808; font-weight: 300; background: #fff; line-height: 1.6; }
+    a, button { color: inherit; text-decoration: none; font-family: inherit; }
+    button { background: none; border: none; cursor: pointer; }
+    .wrap { max-width: 1344px; margin: auto; }
 
     /* =========================================
        2. MULTILINGUAL SWITCHER ENGINE
        ========================================= */
-    body:not(.lang-en) [data-lang="en"] {
-      display: none !important;
-    }
-    body.lang-en [data-lang="cs"] {
-      display: none !important;
-    }
+    body:not(.lang-en) [data-lang="en"] { display: none !important; }
+    body.lang-en [data-lang="cs"] { display: none !important; }
 
     /* =========================================
        3. HEADER & NAVIGATION
        ========================================= */
-    header {
-      height: 100px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      padding: 0 4.3%;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-
-    header .wrap {
-      width: 100%;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo {
-      width: 325px;
-      height: 100px;
-      object-fit: contain;
-      margin-right: auto;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 21px;
-      font-size: 12px;
-      font-weight: 400;
-    }
-
-    .nav a:hover, .nav .drop:hover {
-      color: #ee5a7a;
-    }
-
-    .nav .drop {
-      position: relative;
-      cursor: pointer;
-      padding: 10px 0;
-    }
-
-    .nav .drop:after {
-      content: '▼';
-      font-size: 7px;
-      margin-left: 7px;
-      display: inline-block;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      border: 1px solid #eee;
-      border-radius: 8px;
-      padding: 8px 0;
-      min-width: 280px;
-      z-index: 100;
-    }
-
-    .nav .drop:hover .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu a {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 8px 16px;
-      font-size: 12px;
-      color: #333;
-    }
-
-    .dropdown-menu a:hover {
-      background: #fff5f7;
-      color: #e9476b;
-    }
-
-    .lang-switcher {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-left: 20px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .lang-btn {
-      padding: 3px 7px;
-      border-radius: 4px;
-      color: #777;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    body:not(.lang-en) #btn-no,
-    body.lang-en #btn-en {
-      color: #ee5a7a;
-      background: #fff0f3;
-      font-weight: 700;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      font-size: 24px;
-      padding: 5px;
-    }
+    header { height: 100px; background: #fff; display: flex; align-items: center; padding: 0 4.3%; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    header .wrap { width: 100%; display: flex; align-items: center; }
+    .logo { width: 325px; height: 100px; object-fit: contain; margin-right: auto; }
+    .nav { display: flex; align-items: center; gap: 21px; font-size: 12px; font-weight: 400; }
+    .nav a:hover, .nav .drop:hover { color: #ee5a7a; }
+    .nav .drop { position: relative; cursor: pointer; padding: 10px 0; }
+    .nav .drop:after { content: '▼'; font-size: 7px; margin-left: 7px; display: inline-block; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; border-radius: 8px; padding: 8px 0; min-width: 280px; z-index: 100; }
+    .nav .drop:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; width: 100%; text-align: left; padding: 8px 16px; font-size: 12px; color: #333; }
+    .dropdown-menu a:hover { background: #fff5f7; color: #e9476b; }
+    
+    .lang-switcher { display: inline-flex; align-items: center; gap: 6px; margin-left: 20px; font-size: 12px; font-weight: 500; }
+    .lang-btn { padding: 3px 7px; border-radius: 4px; color: #777; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+    body:not(.lang-en) #btn-cs, body.lang-en #btn-en { color: #ee5a7a; background: #fff0f3; font-weight: 700; }
+    .mobile-menu-btn { display: none; font-size: 24px; padding: 5px; }
 
     /* =========================================
        4. HERO SECTION
        ========================================= */
-    .page-hero {
-      position: relative;
-      text-align: center;
-      padding: 60px 20px 50px;
-      background: linear-gradient(90deg, #f9dbe3 0%, #fff 50%, #d5eff2 100%);
-      border-bottom: 1px solid rgba(0,0,0,0.03);
-    }
-
-    .page-hero h1 {
-      font-size: 34px;
-      font-weight: 400;
-      margin-bottom: 18px;
-      color: #111;
-    }
-
-    .page-hero p {
-      max-width: 820px;
-      margin: 0 auto 12px;
-      font-size: 15px;
-      line-height: 1.8;
-      color: #444;
-    }
-
-    .page-hero strong {
-      font-weight: 500;
-      color: #222;
-    }
+    .page-hero { position: relative; text-align: center; padding: 60px 20px 50px; background: linear-gradient(90deg, #f9dbe3 0%, #fff 50%, #d5eff2 100%); border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .page-hero h1 { font-size: 34px; font-weight: 400; margin-bottom: 18px; color: #111; }
+    .page-hero p { max-width: 820px; margin: 0 auto 12px; font-size: 15px; line-height: 1.8; color: #444; }
+    .page-hero strong { font-weight: 500; color: #222; }
 
     /* =========================================
        5. PILLARS ROWS
        ========================================= */
-    .pillar-section {
-      padding: 65px 20px;
-      border-bottom: 1px solid #f6f6f6;
-    }
-
-    .pillar-section:nth-child(even) {
-      background: #fafafa;
-    }
-
-    .pillar-row {
-      max-width: 1140px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .pillar-image {
-      flex: 0 0 50%;
-      text-align: center;
-    }
-
-    .pillar-image img {
-      width: 224px;
-      height: 224px;
-      max-width: 100%;
-      object-fit: contain;
-      display: inline-block;
-    }
-
-    .pillar-content {
-      flex: 0 0 50%;
-      padding-right: 20px;
-    }
-
-    .svg-divider {
-      width: 126px;
-      height: 26px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid meet' overflow='visible' height='100%25' viewBox='0 0 126 26' fill='black' stroke='none'%3E%3Cpath d='M3,10.2c2.6,0,2.6,2,2.6,3.2S4.4,16.5,3,16.5s-3-1.4-3-3.2S0.4,10.2,3,10.2z M18.8,10.2c1.7,0,3.2,1.4,3.2,3.2s-1.4,3.2-3.2,3.2c-1.7,0-3.2-1.4-3.2-3.2S17,10.2,18.8,10.2z M34.6,10.2c1.5,0,2.6,1.4,2.6,3.2s-0.5,3.2-1.9,3.2c-1.5,0-3.4-1.4-3.4-3.2S33.1,10.2,34.6,10.2z M50.5,10.2c1.7,0,3.2,1.4,3.2,3.2s-1.4,3.2-3.2,3.2c-1.7,0-3.3-0.9-3.3-2.6S48.7,10.2,50.5,10.2z M66.2,10.2c1.5,0,3.4,1.4,3.4,3.2s-1.9,3.2-3.4,3.2c-1.5,0-2.6-0.4-2.6-2.1S64.8,10.2,66.2,10.2z M82.2,10.2c1.7,0.8,2.6,1.4,2.6,3.2s-0.1,3.2-1.6,3.2c-1.5,0-3.7-1.4-3.7-3.2S80.5,9.4,82.2,10.2zM98.6,10.2c1.5,0,2.6,0.4,2.6,2.1s-1.2,4.2-2.6,4.2c-1.5,0-3.7-0.4-3.7-2.1S97.1,10.2,98.6,10.2z M113.4,10.2c1.2,0,2.2,0.9,2.2,3.2s-0.1,3.2-1.3,3.2s-3.1-1.4-3.1-3.2S112.2,10.2,113.4,10.2z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-size: contain;
-      margin-bottom: 18px;
-    }
-
-    .pillar-content h2 {
-      font-size: 27px;
-      font-weight: 400;
-      color: #111;
-      margin-bottom: 16px;
-      line-height: 1.3;
-    }
-
-    .pillar-content p {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.8;
-      margin-bottom: 24px;
-    }
-
-    .button {
-      display: inline-block;
-      border: 1px solid #111;
-      border-radius: 22px;
-      padding: 10px 24px;
-      background: #fff;
-      font-size: 12px;
-      font-weight: 400;
-      color: #111;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .button:hover {
-      background: #111;
-      color: #fff;
-    }
+    .pillar-section { padding: 65px 20px; border-bottom: 1px solid #f6f6f6; }
+    .pillar-section:nth-child(even) { background: #fafafa; }
+    .pillar-row { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 60px; }
+    .pillar-image { flex: 0 0 50%; text-align: center; }
+    .pillar-image img { width: 224px; height: 224px; max-width: 100%; object-fit: contain; display: inline-block; }
+    .pillar-content { flex: 0 0 50%; padding-right: 20px; }
+    .svg-divider { width: 126px; height: 26px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid meet' overflow='visible' height='100%25' viewBox='0 0 126 26' fill='black' stroke='none'%3E%3Cpath d='M3,10.2c2.6,0,2.6,2,2.6,3.2S4.4,16.5,3,16.5s-3-1.4-3-3.2S0.4,10.2,3,10.2z M18.8,10.2c1.7,0,3.2,1.4,3.2,3.2s-1.4,3.2-3.2,3.2c-1.7,0-3.2-1.4-3.2-3.2S17,10.2,18.8,10.2z M34.6,10.2c1.5,0,2.6,1.4,2.6,3.2s-0.5,3.2-1.9,3.2c-1.5,0-3.4-1.4-3.4-3.2S33.1,10.2,34.6,10.2z M50.5,10.2c1.7,0,3.2,1.4,3.2,3.2s-1.4,3.2-3.2,3.2c-1.7,0-3.3-0.9-3.3-2.6S48.7,10.2,50.5,10.2z M66.2,10.2c1.5,0,3.4,1.4,3.4,3.2s-1.9,3.2-3.4,3.2c-1.5,0-2.6-0.4-2.6-2.1S64.8,10.2,66.2,10.2z M82.2,10.2c1.7,0.8,2.6,1.4,2.6,3.2s-0.1,3.2-1.6,3.2c-1.5,0-3.7-1.4-3.7-3.2S80.5,9.4,82.2,10.2zM98.6,10.2c1.5,0,2.6,0.4,2.6,2.1s-1.2,4.2-2.6,4.2c-1.5,0-3.7-0.4-3.7-2.1S97.1,10.2,98.6,10.2z M113.4,10.2c1.2,0,2.2,0.9,2.2,3.2s-0.1,3.2-1.3,3.2s-3.1-1.4-3.1-3.2S112.2,10.2,113.4,10.2z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: contain; margin-bottom: 18px; }
+    .pillar-content h2 { font-size: 27px; font-weight: 400; color: #111; margin-bottom: 16px; line-height: 1.3; }
+    .pillar-content p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 24px; }
+    .button { display: inline-block; border: 1px solid #111; border-radius: 22px; padding: 10px 24px; background: #fff; font-size: 12px; font-weight: 400; color: #111; cursor: pointer; transition: all 0.2s; }
+    .button:hover { background: #111; color: #fff; }
 
     /* =========================================
        6. FOOTER
        ========================================= */
-    footer {
-      padding: 65px 8% 30px;
-      text-align: center;
-      border-top: 1px solid #f0f0f0;
-      background: #fff;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.4fr;
-      gap: 55px;
-      max-width: 1050px;
-      margin: auto;
-      text-align: left;
-    }
-
-    .footer-grid h4 {
-      font-size: 14px;
-      font-weight: 400;
-      margin: 0 0 15px;
-    }
-
-    .footer-grid a {
-      display: block;
-      color: #a69c9b;
-      font-size: 13px;
-      line-height: 1.85;
-      text-align: left;
-    }
-
-    .footer-grid a:hover {
-      color: #080808;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 25px;
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .footer-bottom .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .footer-bottom .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      background: #f0f0f0;
-      border-radius: 50%;
-      color: #555;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .footer-bottom .social-icons a:hover {
-      background: #e9476b;
-      color: #fff;
-    }
-
-    .footer-bottom .copyright {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 8px;
-    }
-
-    .footer-bottom .developer {
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .footer-bottom .developer a {
-      color: #555;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-bottom .developer a:hover {
-      color: #e9476b;
-      text-decoration: underline;
-    }
+    footer { padding: 65px 8% 30px; text-align: center; border-top: 1px solid #f0f0f0; background: #fff; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 55px; max-width: 1050px; margin: auto; text-align: left; }
+    .footer-grid h4 { font-size: 14px; font-weight: 400; margin: 0 0 15px; }
+    .footer-grid a { display: block; color: #a69c9b; font-size: 13px; line-height: 1.85; text-align: left; }
+    .footer-grid a:hover { color: #080808; }
+    .footer-bottom { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 1px solid rgba(0, 0, 0, 0.05); }
+    .footer-bottom .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
+    .footer-bottom .social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: #f0f0f0; border-radius: 50%; color: #555; font-size: 16px; transition: all 0.3s ease; text-decoration: none; }
+    .footer-bottom .social-icons a:hover { background: #e9476b; color: #fff; }
+    .footer-bottom .copyright { font-size: 13px; color: #888; margin-bottom: 8px; }
+    .footer-bottom .developer { font-size: 13px; font-weight: 500; }
+    .footer-bottom .developer a { color: #555; text-decoration: none; transition: color 0.2s; }
+    .footer-bottom .developer a:hover { color: #e9476b; text-decoration: underline; }
 
     /* =========================================
        7. RESPONSIVE
        ========================================= */
     @media (max-width: 900px) {
-      .nav {
-        display: none;
-      }
-      .mobile-menu-btn {
-        display: block;
-      }
-      .pillar-row {
-        flex-direction: column;
-        text-align: center;
-        gap: 35px;
-      }
-      .pillar-image, .pillar-content {
-        flex: 100%;
-        width: 100%;
-        padding: 0;
-      }
-      .pillar-image img {
-        width: 100%;
-        max-width: 224px;
-        height: auto;
-      }
-      .svg-divider {
-        margin: 0 auto 18px;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .nav { display: none; }
+      .mobile-menu-btn { display: block; }
+      .pillar-row { flex-direction: column; text-align: center; gap: 35px; }
+      .pillar-image, .pillar-content { flex: 100%; width: 100%; padding: 0; }
+      .pillar-image img { width: 100%; max-width: 224px; height: auto; }
+      .svg-divider { margin: 0 auto 18px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
-
     @media (max-width: 560px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .page-hero h1 {
-        font-size: 26px;
-      }
-      .pillar-content h2 {
-        font-size: 22px;
-      }
+      .footer-grid { grid-template-columns: 1fr; }
+      .page-hero h1 { font-size: 26px; }
+      .pillar-content h2 { font-size: 22px; }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -533,7 +215,7 @@
     <section class="pillar-section" id="pilar-1">
       <div class="pillar-row">
         <div class="pillar-image">
-          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/1male_komplet_na_web.png" width="224" height="224" alt="Parintimitet">
+          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/1male_komplet_na_web.png" alt="Parintimitet">
         </div>
         <div class="pillar-content">
           <div class="svg-divider"></div>
@@ -555,7 +237,7 @@
     <section class="pillar-section" id="pilar-2">
       <div class="pillar-row">
         <div class="pillar-image">
-          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/2male%CC%81_komplet_na_web.png" width="224" height="224" alt="Těhotenství">
+          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/2male%CC%81_komplet_na_web.png" alt="Těhotenství">
         </div>
         <div class="pillar-content">
           <div class="svg-divider"></div>
@@ -577,7 +259,7 @@
     <section class="pillar-section" id="pilar-3">
       <div class="pillar-row">
         <div class="pillar-image">
-          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/3male%CC%81_komplet_na_web.png" width="224" height="224" alt="Morsrollen">
+          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/3male%CC%81_komplet_na_web.png" alt="Morsrollen">
         </div>
         <div class="pillar-content">
           <div class="svg-divider"></div>
@@ -599,7 +281,7 @@
     <section class="pillar-section" id="pilar-4">
       <div class="pillar-row">
         <div class="pillar-image">
-          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/4male%CC%81_komplet_na_web.png" width="224" height="224" alt="Barn og Ungdom">
+          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/4male%CC%81_komplet_na_web.png" alt="Barn og Ungdom">
         </div>
         <div class="pillar-content">
           <div class="svg-divider"></div>
@@ -621,7 +303,7 @@
     <section class="pillar-section" id="pilar-5">
       <div class="pillar-row">
         <div class="pillar-image">
-          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/5male%CC%81_komplet_na_web.png" width="224" height="224" alt="Moden alder">
+          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/5male%CC%81_komplet_na_web.png" alt="Moden alder">
         </div>
         <div class="pillar-content">
           <div class="svg-divider"></div>
@@ -643,7 +325,7 @@
     <section class="pillar-section" id="pilar-6">
       <div class="pillar-row">
         <div class="pillar-image">
-          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/6male%CC%81_komplet_na_web.png" width="224" height="224" alt="Døden">
+          <img src="https://raw.githubusercontent.com/alansmorais/danielatorp/main/images/6male%CC%81_komplet_na_web.png" alt="Døden">
         </div>
         <div class="pillar-content">
           <div class="svg-divider"></div>
