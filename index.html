@@ -763,6 +763,40 @@
       letter-spacing: 0.2px;
     }
 
+
+    /* Anti-spam fields */
+    .anti-spam-field {
+      position: absolute !important;
+      left: -10000px !important;
+      top: auto !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .captcha-question {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      color: #333;
+      font-size: 13px;
+    }
+
+    .captcha-question input {
+      width: 90px;
+      height: 38px;
+      padding: 8px 10px;
+      border: 1px solid #cfcfd6;
+      border-radius: 6px;
+      font: inherit;
+      background: #fff;
+      color: #111;
+    }
+
     .notice {
       font-size: 12px;
       color: #7b7b84;
@@ -1561,6 +1595,11 @@
       <p class="contact-intro">Máte dotaz? Jsem tu pro vás.</p>
       
       <form class="form" id="contactForm" onsubmit="handleFormSubmit(event)">
+        <!-- Honeypot field: real visitors should leave this empty. -->
+        <div class="anti-spam-field" aria-hidden="true">
+          <label for="website">Nechte toto pole prázdné</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="field">
           <label for="formName">Jméno a příjmení <span class="required">*</span></label>
           <input type="text" required placeholder="Jan Novák" id="formName">
@@ -1580,7 +1619,13 @@
         
         <div class="form-bottom">
           <div class="security-notice">
-            <div class="captcha">Chráněno systémem reCAPTCHA ✓</div>
+            <div class="captcha">Ochrana proti spamu</div>
+            <div class="captcha-question">
+              <label for="captchaAnswer">Kolik je 1 + 1? <span class="required">*</span></label>
+              <input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off"
+                     id="captchaAnswer" name="captchaAnswer" required aria-describedby="captchaHelp">
+            </div>
+            <div class="notice" id="captchaHelp">Pro odeslání zprávy správně odpovězte na kontrolní otázku.</div>
             <div class="notice">
               Pole označená hvězdičkou jsou povinná.<br>
               Odesláním formuláře souhlasím se <a onclick="openGenericModal('Zpracování osobních údajů', 'Veškeré dotazy podléhají přísné mlčenlivosti a zásadám GDPR. Vaše údaje nikdy neposkytujeme třetím stranám.')">zpracováním osobních údajů</a>.
@@ -1853,27 +1898,51 @@
 
     async function handleFormSubmit(e) {
       e.preventDefault();
+
+      const form = document.getElementById('contactForm');
       const sendBtn = document.getElementById('sendSubmitBtn') || document.querySelector('.send');
       const originalText = sendBtn ? sendBtn.innerHTML : 'Odeslat ➜';
+
+      const name = document.getElementById('formName').value.trim();
+      const email = document.getElementById('formEmail').value.trim();
+      const subject = document.getElementById('formSubject') ? document.getElementById('formSubject').value.trim() : '';
+      const message = document.getElementById('formMessage').value.trim();
+      const captchaAnswer = document.getElementById('captchaAnswer').value.trim();
+      const honeypot = document.getElementById('website').value.trim();
+
+      // Client-side checks are useful, but the backend must repeat these checks.
+      if (honeypot !== '') {
+        console.warn('Contact submission blocked by honeypot.');
+        return;
+      }
+
+      if (captchaAnswer !== '2') {
+        alert('Zkontrolujte prosím odpověď na otázku: Kolik je 1 + 1?');
+        document.getElementById('captchaAnswer').focus();
+        return;
+      }
 
       if (sendBtn) {
         sendBtn.disabled = true;
         sendBtn.innerHTML = 'Odesílám...';
       }
 
-      const name = document.getElementById('formName').value.trim();
-      const email = document.getElementById('formEmail').value.trim();
-      const subject = document.getElementById('formSubject') ? document.getElementById('formSubject').value.trim() : '';
-      const message = document.getElementById('formMessage').value.trim();
-
-      const formattedMessage = subject ? `[Předmět: ${subject}]\n\n${message}` : message;
+      const formattedMessage = subject ? `[Předmět: ${subject}]\\n\\n${message}` : message;
 
       const payload = {
         type: 'contact',
         name: name,
         email: email,
         subject: subject,
-        message: formattedMessage
+        message: formattedMessage,
+        // Source attribution: the backend should store these fields with the contact.
+        source_website: 'danielatorp.cz',
+        source_language: 'cs',
+        admin_language: 'en',
+        captcha_answer: captchaAnswer,
+        website: honeypot,
+        submitted_at: new Date().toISOString(),
+        page_url: 'https://www.danielatorp.cz/'
       };
 
       try {
@@ -1886,11 +1955,12 @@
           body: JSON.stringify(payload)
         });
 
+        // NOTE: no-cors cannot confirm that the backend accepted the submission.
         document.getElementById('contactForm').style.display = 'none';
         document.getElementById('successBox').style.display = 'block';
         document.getElementById('successBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
       } catch (err) {
-        console.error('Error submitting form:', err);
+        console.error('Contact form submission failed:', err);
         alert('Při odesílání formuláře došlo k chybě. Zkuste to prosím znovu.');
         if (sendBtn) {
           sendBtn.disabled = false;
