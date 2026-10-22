@@ -1973,7 +1973,7 @@
       }
     }
 
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwrA4qfZdmzOWaRdbIgtDqL0VO5NpURvNBU-5GdnmJ__3cBPbK4Hy-b5vkn1P0FJo0F/exec?api=json";
+   const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwrA4qfZdmzOWaRdbIgtDqL0VO5NpURvNBU-5GdnmJ__3cBPbK4Hy-b5vkn1P0FJo0F/exec?api=json";
     const PAGE_LANG = "CZ";
 
     fetch(WEB_APP_URL)
@@ -1985,16 +1985,25 @@
         if (langData && Array.isArray(langData) && langData.length > 0 && listContainer) {
           listContainer.innerHTML = "";
           
-          langData.forEach(dateText => {
-            if (dateText.trim() === "") return; 
+          langData.forEach(item => {
+            // Support both old text format and new object format
+            let btnText = typeof item === 'string' ? item : item.text;
+            let btnUrl = typeof item === 'string' ? "" : item.url;
+
+            if (!btnText || btnText.trim() === "") return; 
             
             const div = document.createElement('div');
             const btn = document.createElement('button');
             btn.type = "button";
-            btn.innerText = dateText;
+            btn.innerText = btnText;
             
+            // Magic Routing: Go to page if URL exists, otherwise open modal
             btn.onclick = function() {
-              openGenericModal("Dotaz na akci", "Přejete si více informací nebo rezervovat místo na tuto akci?\n\n" + dateText);
+              if (btnUrl) {
+                window.location.href = btnUrl;
+              } else {
+                openGenericModal("Dotaz na akci", "Přejete si více informací nebo rezervovat místo na tuto akci?\n\n" + btnText);
+              }
             };
             
             div.appendChild(btn);
