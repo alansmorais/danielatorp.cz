@@ -585,56 +585,68 @@
 <body>
 
     <!-- HLAVIČKA -->
-    <!-- HLAVIČKA -->
+ <!-- =========================================
+       HEADER & NAVIGATION
+       ========================================= -->
   <header>
     <div class="wrap">
-      <a href="../index.html">
-        <img class="logo" src="https://www.danielatorp.cz/wp-content/uploads/2020/02/logo_perem_bez_pozadi%CC%81.png" alt="Daniela Torp">
+      <a href="../index.html" class="logo-link">
+        <img class="logo" src="../images/logo_perem_bez_pozadi%CC%81.png" alt="Daniela Torp">
       </a>
       
-      <nav class="nav">
+      <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="mainNav">
         <a href="../index.html">Domů</a>
         
-        <div class="drop" onclick="location.href='../6-piliru-intimity/index.html'">
-          6 pilířů intimity
+        <div class="drop">
+          <button type="button" class="drop-toggle" onclick="toggleDropdown(this)">
+            6 pilířů intimity <span class="drop-arrow">▼</span>
+          </button>
           <div class="dropdown-menu">
-            <a href="../6-piliru-intimity/index.html#pilar-1">1. Intimita v páru a vlastní tělo</a>
+            <a href="../6-piliru-intimity/index.html#pilar-1">1. Partnerská intimita a vlastní tělo</a>
             <a href="../6-piliru-intimity/index.html#pilar-2">2. Těhotenství a porod</a>
             <a href="../6-piliru-intimity/index.html#pilar-3">3. Intimita s miminkem</a>
-            <a href="../6-piliru-intimity/index.html#pilar-4">4. Děti a dospívání</a>
+            <a href="../6-piliru-intimity/index.html#pilar-4">4. Děti a dospívající</a>
             <a href="../6-piliru-intimity/index.html#pilar-5">5. Intimita ve zralém věku</a>
-            <a href="../6-piliru-intimity/index.html#pilar-6">6. Intimita v umírání</a>
+            <a href="../6-piliru-intimity/index.html#pilar-6">6. Intimita ve smrti</a>
           </div>
         </div>
 
         <a href="../index.html#om-daniela">Kdo je Daniela</a>
         
-        <div class="drop" onclick="location.href='../workshops.html'">
-          Workshopy
+        <div class="drop">
+          <button type="button" class="drop-toggle" onclick="toggleDropdown(this)">
+            Workshopy <span class="drop-arrow">▼</span>
+          </button>
           <div class="dropdown-menu">
             <a href="umeni-potesit-zenu.html">Umění potěšit ženu</a>
             <a href="umeni-potesit-muze.html">Umění potěšit muže</a>
-            <a href="jen-pro-pary.html" style="color:#ee5a7a;font-weight:500;">Umění potěšit (pro páry)</a>
+            <a href="jen-pro-pary.html">Umění potěšit (pro páry)</a>
             <a href="tajemstvi-panevniho-dna.html">Tajemství pánevního dna</a>
-            <a href="byla-jsem-tehotna-ale.html">Byla jsem těhotná, ale …</a>
+            <a href="byla-jsem-tehotna-ale.html">Byla jsem těhotná, ale…</a>
             <a href="porod-jako-jistota.html">Porod jako jistota</a>
             <a href="matka-a-dcera.html">Matka a dcera</a>
             <a href="Hraj-si-se-mnou.html">Hraj si se mnou</a>
-            <a href="zenska-esence-no.html">Ženská esence a životní síla</a>
-            <a href="../workshops.html" style="font-weight:500;color:#ee5a7a;border-top:1px solid #eee;">Zobrazit všech 9 workshopů ➜</a>
+            <a href="zenska-esence-no.html" style="color:var(--color-primary); font-weight:500;">Ženská esence a životní síla</a>
+            <a href="../workshops.html" style="font-weight:500;color:var(--color-primary); border-top:1px solid #eee;">Zobrazit všech 9 workshopů ➜</a>
           </div>
         </div>
 
         <a href="../konsultasjon.html">Osobní konzultace</a>
         <a href="../blog.html">Blog</a>
         <a href="#kontakt">Kontakt</a>
-        <span class="flag"><img src="https://flagcdn.com/w20/cz.png" width="20" alt="Čeština" style="border-radius: 2px;"></span>
-      </nav>
+        
+        <a href="#" onclick="openCancellationModal(); return false;" style="color:var(--color-text-muted);">Storno podmínky</a>
 
-      <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">☰</button>
+        <div class="language-switcher" aria-label="Language selection">
+          <a class="language-link" href="https://danielatorp.no/workshops/zenska-esence-no.html" hreflang="no" lang="no" aria-label="Norsk"><span class="language-flag" aria-hidden="true"><svg viewBox="0 0 22 16" role="img"><rect width="22" height="16" fill="#ba0c2f"/><rect x="6" width="4" height="16" fill="#fff"/><rect y="6" width="22" height="4" fill="#fff"/><rect x="7" width="2" height="16" fill="#00205b"/><rect y="7" width="22" height="2" fill="#00205b"/></svg></span><span>NO</span></a>
+          <a class="language-link active" href="https://www.danielatorp.cz/workshops/zenska-esence-no.html" hreflang="cs" lang="cs" aria-label="Čeština"><span class="language-flag" aria-hidden="true"><svg viewBox="0 0 22 16" role="img"><rect width="22" height="8" fill="#fff"/><rect y="8" width="22" height="8" fill="#d7141a"/><path d="M0 0L11 8 0 16Z" fill="#11457e"/></svg></span><span>CZ</span></a>
+          <a class="language-link" href="https://danielatorp.com/workshops/zenska-esence-no.html" hreflang="en" lang="en" aria-label="English"><span class="language-flag" aria-hidden="true"><svg viewBox="0 0 22 16" role="img"><rect width="22" height="16" fill="#012169"/><path d="M0 0L22 16M22 0L0 16" stroke="#fff" stroke-width="4"/><path d="M0 0L22 16M22 0L0 16" stroke="#c8102e" stroke-width="2"/><path d="M11 0V16M0 8H22" stroke="#fff" stroke-width="6"/><path d="M11 0V16M0 8H22" stroke="#c8102e" stroke-width="3"/></svg></span><span>EN</span></a>
+        </div>
+      </nav>
     </div>
   </header>
-
   <!-- HLAVNÍ ČÁST (Fotografie páru na pozadí) -->
   <section class="hero">
     <div class="intro">
