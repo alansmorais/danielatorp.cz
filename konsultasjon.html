@@ -238,6 +238,58 @@
     .field textarea { height: 112px; resize: vertical; }
     .form-bottom { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .captcha { height: 56px; width: 230px; background: #2777dc; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; margin: 2px 0 14px; user-select: none; border-radius: 2px; }
+    .anti-spam-field {
+      position: absolute !important;
+      left: -10000px !important;
+      top: auto !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+    .captcha-question {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 2px 0 14px;
+      font-size: 13px;
+      color: #333;
+    }
+    .captcha-question input {
+      width: 80px !important;
+      min-width: 80px;
+      padding: 9px 10px !important;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      font: 400 15px 'Roboto', sans-serif;
+    }
+
+    .anti-spam-field {
+      position: absolute !important;
+      left: -10000px !important;
+      top: auto !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+    .captcha-question {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 2px 0 14px;
+      font-size: 13px;
+      color: #333;
+    }
+    .captcha-question input {
+      width: 80px !important;
+      min-width: 80px;
+      padding: 9px 10px !important;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      font: 400 15px 'Roboto', sans-serif;
+    }
+
     .notice { font-size: 12px; color: #999; line-height: 1.9; }
     .notice a { text-decoration: underline; color: #555; cursor: pointer; }
     .send { background: #000; color: #fff; border: 0; border-radius: 24px; padding: 14px 40px; font-weight: 500; font-size: 14px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
@@ -381,7 +433,7 @@
   <section class="page-hero">
     <div class="page-hero-content">
       <h1>Osobní konzultace</h1>
-      <p>Když dáváte přednost setkání mezi čtyřma či šesti očima. Když cítíte, že některé věci lze říci jen z očí do očí. Jsem tu pro vás.</p>
+      <p>Pokud dáváte přednost osobnímu setkání a cítíte, že některé věci je snazší říct tváří v tvář, jsem tu pro vás.</p>
     </div>
   </section>
 
@@ -392,10 +444,10 @@
       <!-- Left Column: Details & What I Help With -->
       <div class="consultation-col">
         <h2>Osobní konzultace</h2>
-        <p>Nabízím osobní konzultace pro páry i jednotlivce. Pomohu vám najít řešení vašich obtíží. Nevyřeším je za vás; budu vás pouze provázet na cestě k vytouženému cíli. Tu největší část práce musíte odvést sami.</p>
+        <p>Nabízím konzultace pro páry i jednotlivce. Pomohu vám hledat cestu k řešení vašich obtíží. Nemohu je vyřešit za vás, ale mohu vás na cestě k vašemu cíli provázet. Nejdůležitější část práce však zůstává na vás.</p>
         
         <h5>Jak se setkáme?</h5>
-        <p>Konzultace poskytuji formou osobních setkání nebo online přes Skype. Máte-li zájem, napište mi prostřednictvím kontaktního formuláře.</p>
+        <p>Konzultace probíhají osobně nebo online. Máte-li zájem, napište mi prostřednictvím kontaktního formuláře.</p>
 
         <h5>S čím vám mohu pomoci?</h5>
         <ul>
@@ -404,7 +456,7 @@
           <li>Nízká nebo vymizelá chuť na sex.</li>
           <li>Pooperační stavy – císařský řez, nástřih hráze apod.</li>
           <li>Traumata a hluboká zranění.</li>
-          <li>Detabuizace témat intimity.</li>
+          <li>Otevírání témat intimity bez studu a tabu.</li>
           <li>Problémy s erekcí.</li>
           <li>Předčasná ejakulace.</li>
           <li>Komunikační bloky v partnerství.</li>
@@ -415,7 +467,7 @@
       <!-- Right Column: Suitable For & Pricing -->
       <div class="consultation-col">
         <h2>Vhodné pro</h2>
-        <p>pouze dospělé muže a ženy.</p>
+        <p>Pouze pro dospělé.</p>
 
         <div class="pricing-box">
           <h3>Ceník a balíčky</h3>
@@ -430,7 +482,7 @@
         <p style="margin-top: 15px; font-size: 13px; color: #777;"><strong>Zvýhodněné balíčky:</strong> Cena balíčku se hradí jednorázově a balíček lze využít i pro více osob v páru.</p>
 
         <h2 style="margin-top: 30px;">Kde konzultace probíhají?</h2>
-        <p>Česká republika, Norsko, online</p>
+        <p>V České republice, v Norsku nebo online.</p>
 
         <div style="margin-top: 25px;">
           <a class="button" href="#kontakt" style="background:#111; color:#fff; padding: 12px 28px;">Mám zájem / Objednat</a>
@@ -458,9 +510,9 @@
     </div>
     <div>
       <h2>Kdo je Daniela Torp</h2>
-      <p>Jsem člověk. Cítím a vnímám přesně tak jako vy. Prožívám podobné situace, výzvy, radosti i bolesti. Pečuji o sebe, o svou rodinu a přátele. Ctím přírodu a s pokorou se skláním před jejími zákony, nekonečnou rozmanitostí i smyslem pro humor.</p>
-      <p>Věděli jste, že na světě je více než 180 000 ostrovů? Jsou jich tisíce a často si bývají podobné. Přesto je každý z nich naprosto jedinečným ekosystémem.</p>
-      <p>Klíčem k úspěchu je láska – láska k sobě samému.</p>
+      <p>Jsem člověk stejně jako vy. Cítím, vnímám a prožívám podobné situace, výzvy, radosti i bolesti. Pečuji o sebe, svou rodinu a přátele. Ctím přírodu a s pokorou obdivuji její zákonitosti, nekonečnou rozmanitost i smysl pro humor.</p>
+      <p>Věděli jste, že na světě existuje více než 180 000 ostrovů? Některé si mohou být podobné, přesto je každý z nich jedinečným ekosystémem.</p>
+      <p>Klíčem k úspěchu je láska – především láska k sobě samým.</p>
     </div>
   </section>
 
@@ -469,9 +521,17 @@
        ========================================= -->
   <section class="contact" id="kontakt">
     <h2>Napište mi</h2>
-    <p>a domluvte si osobní konzultaci.</p>
+    <p>a domluvte si termín osobní konzultace.</p>
     
     <form class="form" id="contactForm" onsubmit="handleFormSubmit(event)">
+      <div class="anti-spam-field" aria-hidden="true">
+        <label for="website">Toto pole nevyplňujte</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="anti-spam-field" aria-hidden="true">
+        <label for="website">Toto pole nevyplňujte</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
       <div class="field">
         <label>Jméno a příjmení <span class="required">*</span></label>
         <input type="text" required placeholder="Jan Novák" id="formName">
@@ -491,7 +551,11 @@
       
       <div class="form-bottom">
         <div>
-          <div class="captcha">Chráněno systémem reCAPTCHA ✓</div>
+          <div class="captcha-question">
+            <label for="captchaAnswer">Ochrana proti spamu: Kolik je 1 + 1? <span class="required">*</span></label>
+            <input type="number" id="captchaAnswer" name="captchaAnswer" inputmode="numeric" required aria-describedby="captchaHelp">
+            <span id="captchaHelp" class="notice">Zadejte výsledek jako číslo.</span>
+          </div>
           <div class="notice">
             Pole označená hvězdičkou jsou povinná.<br>
             Odesláním formuláře souhlasím se <a onclick="openGenericModal('Zpracování osobních údajů', 'Veškeré dotazy podléhají přísné mlčenlivosti a zásadám GDPR. Vaše údaje nikdy neposkytujeme třetím stranám.')">zpracováním osobních údajů</a>.
@@ -689,12 +753,26 @@
 
     async function handleFormSubmit(e) {
       e.preventDefault();
+
+      const form = e.target;
+      const honeypot = form.querySelector('#website');
+      const captchaAnswer = form.querySelector('#captchaAnswer');
+
+      if (honeypot && honeypot.value.trim() !== '') {
+        return;
+      }
+      if (!captchaAnswer || captchaAnswer.value.trim() !== '2') {
+        alert('Zkontrolujte prosím odpověď na bezpečnostní otázku (1 + 1 = 2).');
+        if (captchaAnswer) captchaAnswer.focus();
+        return;
+      }
+
       const sendBtn = document.querySelector('.send') || e.target.querySelector('button[type="submit"]');
       const originalText = sendBtn ? sendBtn.innerHTML : 'Odeslat ➜';
       
       if (sendBtn) {
         sendBtn.disabled = true;
-        sendBtn.innerHTML = 'Odesílám...';
+        sendBtn.innerHTML = 'Odesílám zprávu…';
       }
 
       const name = document.getElementById('formName').value.trim();
@@ -709,7 +787,11 @@
         name: name,
         email: email,
         subject: subject,
-        message: formattedMessage
+        message: formattedMessage,
+        captcha_answer: captchaAnswer.value.trim(),
+        website: honeypot ? honeypot.value.trim() : '',
+        source_website: 'danielatorp.cz',
+        source_language: 'cs'
       };
 
       try {
