@@ -3,22 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">\n<link rel="icon" href="images/logo_perem_bez_pozadi%CC%81.png" type="image/png">\n<link rel="apple-touch-icon" href="images/logo_perem_bez_pozadi%CC%81.png">
-  <title>Blog – Daniela Torp</title>
-
-  <style>
+  <title>Blog – Daniela Torp</title>   <style>
     /* =========================================
        1. GLOBAL RESET & BASE STYLES
        ========================================= */
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Roboto', Arial, sans-serif; color: #080808; font-weight: 300; background: #fff; line-height: 1.6; }
     a, button { color: inherit; text-decoration: none; font-family: inherit; }
     button { background: none; border: none; cursor: pointer; }
-    .wrap { max-width: 1344px; margin: auto; }
-
-    /* =========================================
+    .wrap { max-width: 1344px; margin: auto; }     /* =========================================
        2. HEADER & NAVIGATION
        ========================================= */
     header { height: 100px; background: #fff; display: flex; align-items: center; padding: 0 4.3%; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(0,0,0,0.05); }
@@ -32,9 +26,7 @@
     .nav .drop:hover .dropdown-menu { display: block; }
     .dropdown-menu a, .dropdown-menu button { display: block; width: 100%; text-align: left; padding: 8px 16px; font-size: 12px; color: #333; }
     .dropdown-menu a:hover, .dropdown-menu button:hover { background: #fff5f7; color: #e9476b; }
-    .flag { font-size: 16px; margin-left: 30px; cursor: default; }
-
-    .language-switcher {
+    .flag { font-size: 16px; margin-left: 30px; cursor: default; }     .language-switcher {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -70,11 +62,7 @@
       display: block;
       width: 22px;
       height: 16px;
-    }
-
-    .mobile-menu-btn { display: none; font-size: 20px; padding: 5px; }
-
-    /* =========================================
+    }     .mobile-menu-btn { display: none; font-size: 20px; padding: 5px; }     /* =========================================
        3. PAGE HERO SECTION
        ========================================= */
     .page-hero { position: relative; text-align: center; padding: 80px 15px 100px; background: linear-gradient(90deg, #f9dbe3 0%, #f8d7e1 31%, #fff 49%, #d7f0f3 71%, #d5eff2 100%); }
@@ -82,9 +70,7 @@
     .page-hero-content { position: relative; z-index: 1; max-width: 700px; margin: auto; }
     .page-hero-content h1 { font-size: 38px; font-weight: 300; margin-bottom: 10px; }
     .button { display: inline-block; border: 1px solid #111; border-radius: 22px; padding: 10px 24px; background: #fff; font-size: 12px; font-weight: 400; color: #111; cursor: pointer; transition: all 0.2s; }
-    .button:hover { background: #111; color: #fff; }
-
-    /* =========================================
+    .button:hover { background: #111; color: #fff; }    /* =========================================
        4. BLOG MAIN LAYOUT (Posts + Sidebar)
        ========================================= */
     .blog-container { max-width: 1170px; margin: 80px auto; padding: 0 5%; display: grid; grid-template-columns: 2fr 1fr; gap: 50px; align-items: start; }
@@ -96,17 +82,13 @@
     .blog-card h3 { font-size: 20px; font-weight: 300; margin-bottom: 10px; line-height: 1.3; }
     .blog-card h3 a:hover { color: #ee5a7a; }
     .blog-meta { font-size: 12px; color: #888; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-    .blog-excerpt { font-size: 14px; color: #666; line-height: 1.5; margin-bottom: 15px; }
-
-    /* Sidebar */
+    .blog-excerpt { font-size: 14px; color: #666; line-height: 1.5; margin-bottom: 15px; }     /* Sidebar */
     .sidebar { background: #fdf8f9; border: 1px solid #f4e8ec; border-radius: 8px; padding: 25px; }
     .sidebar h5 { font-size: 16px; font-weight: 400; margin-bottom: 15px; border-bottom: 2px solid #ee5a7a; padding-bottom: 6px; display: inline-block; }
     .sidebar ul { list-style: none; }
     .sidebar li { margin-bottom: 10px; }
     .sidebar a { font-size: 14px; color: #555; transition: color 0.2s; }
-    .sidebar a:hover { color: #ee5a7a; }
-
-    /* =========================================
+    .sidebar a:hover { color: #ee5a7a; }     /* =========================================
        5. FOOTER
        ========================================= */
     footer { padding: 65px 8% 30px; text-align: center; border-top: 1px solid #f0f0f0; background: #fff; }
@@ -116,9 +98,7 @@
     .footer-grid a:hover, .footer-grid button:hover { color: #080808; }
     .social { display: flex; justify-content: center; gap: 22px; font-size: 19px; color: #999; margin: 85px 0 16px; }
     .social a:hover { color: #111; }
-    .copyright { font-size: 12px; color: #aaa; }
-
-    /* =========================================
+    .copyright { font-size: 12px; color: #aaa; }     /* =========================================
        6. MODAL DIALOG
        ========================================= */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(3px); }
@@ -129,16 +109,12 @@
     .modal-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #ee5a7a; font-weight: 500; margin-bottom: 6px; display: block; }
     .modal-body { font-size: 15px; color: #444; line-height: 1.7; }
     .modal-body p { margin-bottom: 12px; }
-    .modal-btn-row { margin-top: 24px; display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid #eee; padding-top: 16px; }
-
-    /* =========================================
+    .modal-btn-row { margin-top: 24px; display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid #eee; padding-top: 16px; }     /* =========================================
        7. RESPONSIVE MEDIA QUERIES
        ========================================= */
     @media (max-width: 900px) { .nav { display: none; } .mobile-menu-btn { display: block; } .blog-container { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .blog-card { grid-template-columns: 1fr; } .blog-card-content { padding: 18px; } .footer-grid { grid-template-columns: 1fr; } }
-      /* MOBILE LANGUAGE SWITCHER */
-
-      .language-switcher {
+      /* MOBILE LANGUAGE SWITCHER */       .language-switcher {
         margin-left: 0;
         padding: 16px 0 0;
         gap: 14px;
@@ -154,9 +130,7 @@
   <link rel="alternate" hreflang="en" href="https://danielatorp.com/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://danielatorp.com/blog.html">
 </head>
-<body>
-
-  <!-- =========================================
+<body>   <!-- =========================================
        HEADER & NAVIGATION
        ========================================= -->
   <header>
@@ -178,9 +152,7 @@
             <a href="6-piliru-intimity/index.html#pilar-5">5. Intimita ve zralém věku</a>
             <a href="6-piliru-intimity/index.html#pilar-6">6. Intimita ve smrti</a>
           </div>
-        </div>
-
-        <a href="index.html#om-daniela">Kdo je Daniela</a>
+        </div>         <a href="index.html#om-daniela">Kdo je Daniela</a>
         
         <div class="drop" onclick="location.href='workshops.html'">
           Workshopy
@@ -196,9 +168,7 @@
             <a href="workshops/zenska-esence-no.html">Ženská esence a životní síla</a>
             <a href="workshops.html" style="font-weight:500;color:#ee5a7a;border-top:1px solid #eee;">Zobrazit všech 9 workshopů ➜</a>
           </div>
-        </div>
-
-        <a href="konsultasjon.html">Osobní konzultace</a>
+        </div>         <a href="konsultasjon.html">Osobní konzultace</a>
         <a href="blog.html" style="color:#ee5a7a; font-weight:500;">Blog</a>
         <a href="index.html#kontakt">Kontakt</a>
         <div class="language-switcher" aria-label="Výběr jazyka">
@@ -206,20 +176,14 @@
   <a class="active" href="https://www.danielatorp.cz/blog.html" hreflang="cz" aria-label="Čeština"><span class="language-flag"><svg viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#fff" d="M0 0h22v8H0z"/><path fill="#d7141a" d="M0 8h22v8H0z"/><path fill="#11457e" d="M0 0l10 8L0 16z"/></svg></span><span>CZ</span></a>
   <a class="" href="https://danielatorp.com/blog.html" hreflang="en" aria-label="EN"><span class="language-flag"><svg viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="22" height="16" fill="#012169"/><path d="M0 0l22 16M22 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0l22 16M22 0L0 16" stroke="#c8102e" stroke-width="1.4"/><path d="M11 0v16M0 8h22" stroke="#fff" stroke-width="5"/><path d="M11 0v16M0 8h22" stroke="#c8102e" stroke-width="3"/></svg></span><span>EN</span></a>
 </div>
-      </nav>
-
-      <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">☰</button>
+      </nav>       <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">☰</button>
     </div>
-  </header>
-
-  <!-- PAGE HERO -->
+  </header>   <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="page-hero-content">
       <h1>Blog</h1>
     </div>
-  </section>
-
-  <!-- BLOG CONTAINER -->
+  </section>   <!-- BLOG CONTAINER -->
   <div class="blog-container">
     
     <!-- Blog Posts List -->
@@ -234,9 +198,7 @@
           <p class="blog-excerpt">Osobní vyprávění o hledání vnitřního kompasu, přijetí zranitelnosti a znovunalezení pravé životní síly.</p>
           <a class="button" style="display:inline-block; font-size:11px; padding:6px 14px;" href="#" onclick="openBlogPost('Můj příběh', 'Toto je příběh mé cesty životními vzestupy i pády a o tom, jak jsem našla cestu k sobě samé a k umění žít ve skutečné intimitě se světem kolem nás.')">Přečíst celý článek</a>
         </div>
-      </article>
-
-      <!-- Post 2 -->
+      </article>       <!-- Post 2 -->
       <article class="blog-card">
         <img src="images/1.jpg" alt="Projekt: Dítě">
         <div class="blog-card-content">
@@ -245,21 +207,13 @@
           <p class="blog-excerpt">Ve světě, který od nás žádá sílu, se mateřství často stává projektem s cílem dosáhnout dokonalého výsledku...</p>
           <a class="button" style="display:inline-block; font-size:11px; padding:6px 14px;" href="#" onclick="openBlogPost('Projekt: Dítě', 'Ve světě, který po nás chce, abychom byly silné ženy, a kde se samy tak rády prezentujeme jako silné ženy, se mateřství stává projektem, jehož koncem má být dokonalý produkt – dítě. Brzy se mi narodí druhé dítě. And víc než kdy jindy přemýšlím o tom, jak si vychutnám další šálek silné životní kávy a jaké lekce na mě čekají. Protože čekají na každého z nás!')">Přečíst celý článek</a>
         </div>
-      </article>
-
-    </div>
-
-    <!-- Sidebar / Categories -->
+      </article>     </div>     <!-- Sidebar / Categories -->
     <aside class="sidebar">
       <h5>Kategorie</h5>
       <ul>
         <li><a href="#">Daniela v médiích (2)</a></li>
       </ul>
-    </aside>
-
-  </div>
-
-  <!-- =========================================
+    </aside>   </div>   <!-- =========================================
        FOOTER
        ========================================= -->
   <footer>
@@ -301,9 +255,7 @@
       <a href="https://youtube.com" target="_blank">◉</a>
     </div>
     <div class="copyright">© 2026 Všechna práva vyhrazena | Daniela Torp</div>
-  </footer>
-
-  <!-- =========================================
+  </footer>   <!-- =========================================
        MODAL DIALOG
        ========================================= -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
@@ -316,40 +268,28 @@
         <button class="button" onclick="closeModalDirect()">Zavřít</button>
       </div>
     </div>
-  </div>
-
-  <!-- =========================================
+  </div>   <!-- =========================================
        JAVASCRIPT LOGIC
        ========================================= -->
   <script>
     function openBlogPost(title, text) {
       showModal("Článek z blogu", title, text);
-    }
-
-    function openGenericModal(title, text) {
+    }     function openGenericModal(title, text) {
       showModal("Informace", title, text);
-    }
-
-    function showModal(tag, title, contentHtml) {
+    }     function showModal(tag, title, contentHtml) {
       document.getElementById('modalTag').innerText = tag;
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalContent').innerHTML = contentHtml;
       document.getElementById('modalOverlay').style.display = 'flex';
       document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal(e) {
+    }     function closeModal(e) {
       if (e.target.id === 'modalOverlay') {
         closeModalDirect();
       }
-    }
-
-    function closeModalDirect() {
+    }     function closeModalDirect() {
       document.getElementById('modalOverlay').style.display = 'none';
       document.body.style.overflow = 'auto';
-    }
-
-    function toggleMobileNav() {
+    }     function toggleMobileNav() {
       const nav = document.querySelector('.nav');
       if (nav.style.display === 'flex') {
         nav.style.display = 'none';
@@ -364,12 +304,8 @@
         nav.style.padding = '20px';
         nav.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
       }
-    }
-
-    document.addEventListener('keydown', function(e) {
+    }     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModalDirect();
     });
-  </script>
-
-</body>
+  </script> </body>
 </html>
