@@ -912,7 +912,7 @@
     }
 
     /* =========================================
-       9. POPUP MODAL
+       9. POPUP MODAL & CANCELLATION POLICY
        ========================================= */
     .modal-overlay {
       display: none;
@@ -929,7 +929,7 @@
 
     .modal-card {
       background: #fff;
-      max-width: 600px;
+      max-width: 650px;
       width: 100%;
       max-height: 85vh;
       overflow-y: auto;
@@ -994,6 +994,22 @@
 
     .modal-body p {
       margin-bottom: 12px;
+    }
+
+    .modal-body h4 {
+      font-size: 16px;
+      font-weight: 500;
+      color: #111;
+      margin: 16px 0 8px;
+    }
+
+    .modal-body ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .modal-body li {
+      margin-bottom: 6px;
     }
 
     .modal-btn-row {
@@ -1324,6 +1340,9 @@
         <a href="konsultasjon.html">Osobní konzultace</a>
         <a href="blog.html">Blog</a>
         <a href="#kontakt">Kontakt</a>
+        
+        <!-- Cancellation Policy Header Link -->
+        <a href="#" onclick="openCancellationModal(); return false;" style="color:var(--color-text-muted);">Storno podmínky</a>
 
         <div class="language-switcher" aria-label="Language selection">
           <a class="language-link" href="https://danielatorp.no/" hreflang="no" lang="no" aria-label="Norsk"><span class="language-flag" aria-hidden="true"><svg viewBox="0 0 22 16" role="img"><rect width="22" height="16" fill="#ba0c2f"/><rect x="6" width="4" height="16" fill="#fff"/><rect y="6" width="22" height="4" fill="#fff"/><rect x="7" width="2" height="16" fill="#00205b"/><rect y="7" width="22" height="2" fill="#00205b"/></svg></span><span>NO</span></a>
@@ -1592,6 +1611,8 @@
             <button type="button" onclick="openGenericModal('Daniela v médiích', 'Rozhovory a podcasty jsou k dispozici na vyžádání.')">Daniela v médiích</button>
             <a href="blog.html">Blog</a>
             <a href="#kontakt">Kontakt</a>
+            <!-- Cancellation Policy Footer Link -->
+            <a href="#" onclick="openCancellationModal(); return false;">Storno podmínky</a>
           </div>
         </div>
 
@@ -1734,7 +1755,7 @@
     }
 
     function openDateModal(title, dateStr) {
-      showModal("Termín akce", title, "Datum: " + dateStr + "\\n\\nPřejete si více informací nebo rezervaci místa? Vyplňte formulář níže.", function() {
+      showModal("Termín akce", title, "Datum: " + dateStr + "\n\nPřejete si více informací nebo rezervaci místa? Vyplňte formulář níže.", function() {
         prefillSubject("Zájem o akci: " + title + " (" + dateStr + ")");
       });
     }
@@ -1745,17 +1766,60 @@
       });
     }
 
+    // New Function for Cancellation Policy
+    function openCancellationModal() {
+      const policyHTML = `
+        <p>Vážím si času každého klienta a péči, kterou věnuji přípravě jednotlivých setkání. Abychom společně mohli vytvářet prostor založený na respektu, důvěře a vzájemné zodpovědnosti, prosím o dodržování následujících storno podmínek.</p>
+        
+        <h4>1. Semináře a workshopy</h4>
+        <ul>
+          <li><strong>Zrušení 14 a více dní před konáním:</strong> Vrátím 100 % uhrazené částky.</li>
+          <li><strong>Zrušení 7–13 dní před konáním:</strong> Vrátím 50 % uhrazené částky.</li>
+          <li><strong>Zrušení méně než 7 dní před konáním:</strong> Uhrazená částka je nevratná.</li>
+        </ul>
+        <p>Pokud za sebe najdete náhradníka, je možné po předchozí domluvě převést rezervaci na něj.</p>
+        <p>Pokud seminář nebo workshop zruším já, bude vám nabídnuta možnost převodu platby na jiný termín, nebo vrácení 100 % uhrazené částky.</p>
+
+        <h4>2. Masáže a individuální sezení</h4>
+        <p>V případě individuálních rezervací, včetně masáží a konzultací, platí následující podmínky:</p>
+        <ul>
+          <li><strong>Zrušení nebo změna termínu alespoň 48 hodin předem:</strong> Bez storno poplatku.</li>
+          <li><strong>Zrušení méně než 48 hodin předem:</strong> Storno poplatek ve výši 50 % ceny rezervované služby.</li>
+          <li><strong>Zrušení méně než 24 hodin předem nebo nedostavení se bez předchozí omluvy:</strong> Storno poplatek ve výši 100 % ceny rezervované služby.</li>
+        </ul>
+        <p>Pokud se nemůžete dostavit z důvodu náhlých a závažných okolností, prosím, kontaktujte mě co nejdříve. Každou takovou situaci se budu snažit řešit individuálně a s pochopením.</p>
+
+        <h4>3. Jak rezervaci zrušit</h4>
+        <p>Zrušení rezervace nebo žádost o změnu termínu mi prosím zašlete písemně prostřednictvím e-mailu nebo jiného komunikačního kanálu, přes který byla rezervace sjednána. Rozhodující je okamžik doručení zprávy.</p>
+
+        <h4>4. Důležité informace</h4>
+        <p>Rezervací služby potvrzujete, že jste se s těmito storno podmínkami seznámili.</p>
+        <p>Storno podmínky upravují zrušení rezervace a je nutné je odlišovat od případného zákonného práva spotřebitele odstoupit od smlouvy. U rezervací uzavíraných online se mohou uplatnit zákonné výjimky a další povinnosti podle povahy konkrétní služby.</p>
+
+        <p>Děkuji za respektování mého času, práce a prostoru, který společně vytváříme.</p>
+        
+        <p>S úctou,<br><strong>Daniela Torp</strong></p>
+      `;
+
+      showModal("Podmínky", "Storno podmínky", policyHTML, null);
+    }
+
     function showModal(tag, title, contentHtml, onAction) {
       document.getElementById('modalTag').innerText = tag;
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalContent').innerHTML = contentHtml;
 
       const actionBtn = document.getElementById('modalActionBtn');
-      actionBtn.innerText = "Mám zájem / Zeptat se";
-      actionBtn.onclick = function() {
-        closeModalDirect();
-        if (onAction) onAction();
-      };
+      if (onAction) {
+        actionBtn.style.display = 'inline-flex';
+        actionBtn.innerText = "Mám zájem / Zeptat se";
+        actionBtn.onclick = function() {
+          closeModalDirect();
+          onAction();
+        };
+      } else {
+        actionBtn.style.display = 'none';
+      }
 
       document.getElementById('modalOverlay').style.display = 'flex';
       document.body.style.overflow = 'hidden';
@@ -1802,7 +1866,7 @@
       const subject = document.getElementById('formSubject') ? document.getElementById('formSubject').value.trim() : '';
       const message = document.getElementById('formMessage').value.trim();
 
-      const formattedMessage = subject ? `[Předmět: ${subject}]\\n\\n${message}` : message;
+      const formattedMessage = subject ? `[Předmět: ${subject}]\n\n${message}` : message;
 
       const payload = {
         type: 'contact',
@@ -1856,7 +1920,7 @@
             btn.innerText = dateText;
             
             btn.onclick = function() {
-              openGenericModal("Dotaz na akci", "Přejete si více informací nebo rezervovat místo na tuto akci?\\n\\n" + dateText);
+              openGenericModal("Dotaz na akci", "Přejete si více informací nebo rezervovat místo na tuto akci?\n\n" + dateText);
             };
             
             div.appendChild(btn);
