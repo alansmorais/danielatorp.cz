@@ -1,0 +1,7 @@
+{
+  "name": "Daniela Torp – Intimita v souvislostech",
+  "description": "Oficiální webová aplikace Daniely Torp – Intimita v souvislostech, 6 pilířů intimity, workshopy a osobní konzultace.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
