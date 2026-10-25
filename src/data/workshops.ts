@@ -218,8 +218,8 @@ export const WORKSHOPS: WorkshopItem[] = [
       'Podpůrná komunita lidí naladěných na stejnou vlnu'
     ],
     datesAndLocation: {
-      dates: 'Termíny pro rok 2026 / 2027',
-      schedule: 'Pátek 17:00 – Neděle 15:00',
+      dates: '11.–13. prosince 2026',
+      schedule: 'Pátek 11. 12.: 17:00–21:00\nSobota 12. 12.: 10:00–23:00\nNeděle 13. 12.: 10:00–15:00',
       location: 'Kamenný Újezd 38, Nýřany',
       price: '4 800 Kč',
       note: 'Včetně ubytování a stravy.'

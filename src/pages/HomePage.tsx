@@ -37,16 +37,42 @@ export const HomePage: React.FC<HomePageProps> = ({
   const handleDateClick = (item: UpcomingDateItem) => {
     if (item.url) {
       if (item.url.startsWith('http')) {
-        window.open(item.url, '_blank');
+        // Keep internal workshop links inside this app; only external links open a new tab.
+        try {
+          const link = new URL(item.url);
+          if (link.hostname === window.location.hostname) {
+            const match = link.pathname.match(/workshops\/([^/]+?)(?:\.html)?\/?$/i);
+            if (match?.[1]) {
+              onNavigate(`workshop-${decodeURIComponent(match[1])}`);
+              return;
+            }
+          }
+        } catch {
+          // Fall through to the safe internal-link handling below.
+        }
+        window.open(item.url, '_blank', 'noopener,noreferrer');
       } else {
         const cleanPath = item.url.replace(/^(\.\.\/|\/)/, '').replace('.html', '');
-        onNavigate(cleanPath);
+        const workshopPath = cleanPath.match(/^workshops\/([^/]+)$/i);
+        onNavigate(workshopPath ? `workshop-${decodeURIComponent(workshopPath[1])}` : cleanPath);
       }
       return;
     }
 
     if (item.workshopId) {
       onNavigate(`workshop-${item.workshopId}`);
+      return;
+    }
+
+    // Live Google Sheets entries sometimes contain only display text and no URL.
+    // Resolve known workshop titles so these items still open the full detail page.
+    const normalizedText = item.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const matchedWorkshop = WORKSHOPS.find((workshop) => {
+      const normalizedTitle = workshop.title.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+      return normalizedText.includes(normalizedTitle);
+    });
+    if (matchedWorkshop) {
+      onNavigate(`workshop-${matchedWorkshop.id}`);
       return;
     }
 
