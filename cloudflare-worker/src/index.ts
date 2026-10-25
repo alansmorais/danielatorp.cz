@@ -98,6 +98,8 @@ export default {
             stripe_event_id: event.id,
             checkout_session_id: object.id,
             payment_intent_id: object.payment_intent,
+            payment_status: object.payment_status,
+            shared_secret: env.GOOGLE_REGISTRATION_SHARED_SECRET,
             amount_total: object.amount_total,
             currency: object.currency,
             customer_email: object.customer_details && (object.customer_details as Record<string, unknown>).email,
@@ -151,6 +153,7 @@ export default {
     form.set('line_items[0][price_data][product_data][description]', workshop.description);
     form.set('line_items[0][quantity]', '1');
     form.set('metadata[workshop_id]', body.workshopId!);
+    form.set('metadata[workshop_title]', workshop.title);
     form.set('metadata[participant_name]', name);
     form.set('metadata[participant_email]', email);
     form.set('metadata[site_language]', 'cs');
