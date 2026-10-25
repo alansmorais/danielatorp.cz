@@ -79,7 +79,7 @@ export default {
         return new Response('Invalid Stripe signature', { status: 400 });
       }
 
-      const event = JSON.parse(rawBody) as { type?: string; data?: { object?: Record<string, unknown> } };
+      const event = JSON.parse(rawBody) as { id?: string; type?: string; data?: { object?: Record<string, unknown> } };
       const object = event.data?.object || {};
       if (event.type === 'checkout.session.completed' && object.payment_status === 'paid') {
         if (!env.GOOGLE_REGISTRATION_WEBHOOK_URL) {
@@ -91,7 +91,7 @@ export default {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             type: 'workshop_registration_paid',
-            stripe_event_id: event.data?.object && (object.id as string),
+            stripe_event_id: event.id,
             checkout_session_id: object.id,
             payment_intent_id: object.payment_intent,
             amount_total: object.amount_total,
@@ -131,8 +131,7 @@ export default {
 
     const site = new URL(env.SITE_URL);
     const successUrl = new URL('/', site);
-    successUrl.searchParams.set('payment', 'success');
-    successUrl.searchParams.set('session_id', '{CHECKOUT_SESSION_ID}');
+    successUrl.search = '?payment=success&session_id={CHECKOUT_SESSION_ID}';
     const cancelUrl = new URL('/', site);
     cancelUrl.hash = `workshop-${encodeURIComponent(body.workshopId!)}`;
 
