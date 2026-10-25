@@ -42,7 +42,7 @@ export const WorkshopDetailPage: React.FC<WorkshopDetailPageProps> = ({
     event.preventDefault();
     setCheckoutError('');
 
-    const checkoutEndpoint = import.meta.env.VITE_STRIPE_WORKER_URL;
+    const checkoutEndpoint = (import.meta as ImportMeta & { env?: { VITE_STRIPE_WORKER_URL?: string } }).env?.VITE_STRIPE_WORKER_URL;
     if (!checkoutEndpoint) {
       setCheckoutError('Online platba se právě připravuje. Prosím kontaktujte Danielu prostřednictvím kontaktního formuláře.');
       return;
@@ -57,7 +57,7 @@ export const WorkshopDetailPage: React.FC<WorkshopDetailPageProps> = ({
           workshopId: workshop.id,
           participantName: participantName.trim(),
           participantEmail: participantEmail.trim(),
-          successUrl: `${window.location.origin}/#/registration-success`,
+          successUrl: `${window.location.origin}/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
           cancelUrl: window.location.href
         })
       });
