@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { WorkshopItem } from '../types';
 import { ContactForm } from '../components/ContactForm';
 
@@ -27,10 +27,49 @@ export const WorkshopDetailPage: React.FC<WorkshopDetailPageProps> = ({
     window.scrollTo(0, 0);
   }, [workshop.id]);
 
+  const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [participantName, setParticipantName] = useState('');
+  const [participantEmail, setParticipantEmail] = useState('');
+  const [checkoutError, setCheckoutError] = useState('');
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+
   const handleInquire = () => {
-    onPrefillContact(`Přihláška na workshop: ${workshop.title}`);
-    const el = document.getElementById('kontakt');
-    el?.scrollIntoView({ behavior: 'smooth' });
+    setCheckoutError('');
+    setRegistrationOpen(true);
+  };
+
+  const handleCheckout = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setCheckoutError('');
+
+    const checkoutEndpoint = import.meta.env.VITE_STRIPE_WORKER_URL;
+    if (!checkoutEndpoint) {
+      setCheckoutError('Online platba se právě připravuje. Prosím kontaktujte Danielu prostřednictvím kontaktního formuláře.');
+      return;
+    }
+
+    setCheckoutLoading(true);
+    try {
+      const response = await fetch(`${checkoutEndpoint.replace(/\/$/, '')}/api/create-checkout-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          workshopId: workshop.id,
+          participantName: participantName.trim(),
+          participantEmail: participantEmail.trim(),
+          successUrl: `${window.location.origin}/#/registration-success`,
+          cancelUrl: window.location.href
+        })
+      });
+      const result = await response.json() as { url?: string; error?: string };
+      if (!response.ok || !result.url) {
+        throw new Error(result.error || 'Platbu se nepodařilo připravit. Zkuste to prosím znovu.');
+      }
+      window.location.assign(result.url);
+    } catch (error) {
+      setCheckoutError(error instanceof Error ? error.message : 'Došlo k chybě při přípravě platby.');
+      setCheckoutLoading(false);
+    }
   };
 
   return (
@@ -211,6 +250,61 @@ export const WorkshopDetailPage: React.FC<WorkshopDetailPageProps> = ({
           </div>
         </div>
       </section>
+
+      {registrationOpen && (
+        <div
+          className="registration-modal-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget && !checkoutLoading) setRegistrationOpen(false);
+          }}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 10000, background: 'rgba(12, 16, 24, 0.68)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px'
+          }}
+        >
+          <section
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="registration-modal-title"
+            style={{
+              position: 'relative', width: '100%', maxWidth: '480px', maxHeight: '90vh',
+              overflowY: 'auto', background: '#fff', borderRadius: '14px', padding: '28px',
+              boxShadow: '0 24px 80px rgba(0,0,0,.25)', color: '#222'
+            }}
+          >
+            <button
+              type="button"
+              aria-label="Zavřít okno"
+              onClick={() => setRegistrationOpen(false)}
+              disabled={checkoutLoading}
+              style={{ position: 'absolute', top: '12px', right: '14px', border: 0, background: 'transparent', fontSize: '26px', cursor: 'pointer' }}
+            >×</button>
+            <p style={{ color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '12px', marginBottom: '8px' }}>
+              Registrace na workshop
+            </p>
+            <h2 id="registration-modal-title" style={{ marginTop: 0, paddingRight: '24px' }}>{workshop.title}</h2>
+            {workshop.datesAndLocation?.dates && <p><strong>Termín:</strong> {workshop.datesAndLocation.dates}</p>}
+            {workshop.datesAndLocation?.price && <p style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-primary)' }}>{workshop.datesAndLocation.price}</p>}
+            {workshop.datesAndLocation?.note && <p style={{ fontSize: '13px', color: '#666' }}>{workshop.datesAndLocation.note}</p>}
+            <form onSubmit={handleCheckout} style={{ display: 'grid', gap: '14px', marginTop: '20px' }}>
+              <div>
+                <label htmlFor="registration-name" style={{ display: 'block', marginBottom: '6px' }}>Jméno a příjmení *</label>
+                <input id="registration-name" name="name" autoComplete="name" required value={participantName} onChange={(event) => setParticipantName(event.target.value)} style={{ width: '100%', boxSizing: 'border-box', padding: '12px', border: '1px solid #d7d7d7', borderRadius: '7px' }} />
+              </div>
+              <div>
+                <label htmlFor="registration-email" style={{ display: 'block', marginBottom: '6px' }}>E-mail *</label>
+                <input id="registration-email" name="email" type="email" autoComplete="email" required value={participantEmail} onChange={(event) => setParticipantEmail(event.target.value)} style={{ width: '100%', boxSizing: 'border-box', padding: '12px', border: '1px solid #d7d7d7', borderRadius: '7px' }} />
+              </div>
+              {checkoutError && <p role="alert" style={{ color: '#b42318', background: '#fff3f2', padding: '10px 12px', borderRadius: '7px', margin: 0 }}>{checkoutError}</p>}
+              <button type="submit" className="button primary" disabled={checkoutLoading} style={{ width: '100%', padding: '13px 20px' }}>
+                {checkoutLoading ? 'Připravuji bezpečnou platbu…' : 'Pokračovat k bezpečné platbě'}
+              </button>
+              <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>Platba bude zpracována na zabezpečené platební stránce Stripe. Registrace bude potvrzena až po ověření platby.</p>
+            </form>
+          </section>
+        </div>
+      )}
 
       {/* CONTACT SECTION */}
       <ContactForm
