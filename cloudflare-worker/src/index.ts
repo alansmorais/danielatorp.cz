@@ -108,7 +108,10 @@ export default {
             paid_at: new Date().toISOString()
           })
         });
-        if (!forward.ok) return new Response('Registration destination failed', { status: 502 });
+        const forwardedResult = await forward.json().catch(() => null) as { ok?: boolean } | null;
+        if (!forward.ok || forwardedResult?.ok !== true) {
+          return new Response('Registration destination failed', { status: 502 });
+        }
       }
       return new Response('ok', { status: 200 });
     }
