@@ -138,8 +138,8 @@ export default {
 
     const form = new URLSearchParams();
     form.set('mode', 'payment');
-    form.set('success_url', body.successUrl && new URL(body.successUrl).origin === site.origin ? body.successUrl : successUrl.toString());
-    form.set('cancel_url', body.cancelUrl && new URL(body.cancelUrl).origin === site.origin ? body.cancelUrl : cancelUrl.toString());
+    form.set('success_url', successUrl.toString());
+    form.set('cancel_url', cancelUrl.toString());
     form.set('customer_email', email);
     form.set('client_reference_id', body.workshopId!);
     form.set('line_items[0][price_data][currency]', workshop.currency);
