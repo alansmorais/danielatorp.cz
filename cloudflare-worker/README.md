@@ -27,7 +27,7 @@ The frontend needs `VITE_STRIPE_WORKER_URL` set to the deployed Worker base URL 
 
 For paid `checkout.session.completed` events, the Worker verifies Stripe's signature and forwards the verified event to `GOOGLE_REGISTRATION_WEBHOOK_URL`. This must be a **new, dedicated Google Apps Script web app** that validates and records registration events in the intended Google Sheet, with duplicate-event protection using Stripe event ID. Do not point it at the existing contact form endpoint; that endpoint accepts a different payload and must remain untouched.
 
-Set `GOOGLE_REGISTRATION_WEBHOOK_URL` as a Worker variable only after that dedicated endpoint has been implemented and tested. Until it is configured, the Worker intentionally returns an error for paid checkout events so Stripe retries delivery. No payment is considered registered by the website solely because the browser returns from Checkout.
+Deploy the source in `google-apps-script/stripe-registration-receiver.gs` as a separate Apps Script web app. Set Script Properties `SPREADSHEET_ID` and `STRIPE_REGISTRATION_SHARED_SECRET` in that project, using the same random secret as the Worker. Then set `GOOGLE_REGISTRATION_WEBHOOK_URL` and `GOOGLE_REGISTRATION_SHARED_SECRET` as Worker variables/secrets and test with a dedicated test sheet. Do not modify or reuse the existing contact-form script. Until it is configured, the Worker intentionally returns an error for paid checkout events so Stripe retries delivery. No payment is considered registered by the website solely because the browser returns from Checkout.
 
 ## Pricing safety
 
