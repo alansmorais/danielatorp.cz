@@ -4,6 +4,7 @@ export interface Env {
   SITE_URL: string;
   ALLOWED_ORIGIN: string;
   GOOGLE_REGISTRATION_WEBHOOK_URL?: string;
+  GOOGLE_REGISTRATION_SHARED_SECRET?: string;
 }
 
 const WORKSHOPS: Record<string, { title: string; amount: number; currency: 'czk'; description: string }> = {
@@ -82,13 +83,16 @@ export default {
       const event = JSON.parse(rawBody) as { id?: string; type?: string; data?: { object?: Record<string, unknown> } };
       const object = event.data?.object || {};
       if (event.type === 'checkout.session.completed' && object.payment_status === 'paid') {
-        if (!env.GOOGLE_REGISTRATION_WEBHOOK_URL) {
+        if (!env.GOOGLE_REGISTRATION_WEBHOOK_URL || !env.GOOGLE_REGISTRATION_SHARED_SECRET) {
           // Fail visibly so Stripe retries until the registration destination is configured.
           return new Response('Payment verified, but registration destination is not configured', { status: 500 });
         }
         const forward = await fetch(env.GOOGLE_REGISTRATION_WEBHOOK_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${env.GOOGLE_REGISTRATION_SHARED_SECRET}`
+          },
           body: JSON.stringify({
             type: 'workshop_registration_paid',
             stripe_event_id: event.id,
