@@ -140,7 +140,7 @@ export const WorkshopDetailPage: React.FC<WorkshopDetailPageProps> = ({
                     <strong>Termín:</strong> {workshop.datesAndLocation.dates}
                   </p>
                   {workshop.datesAndLocation.schedule && (
-                    <p>
+                    <p style={{ whiteSpace: 'pre-line' }}>
                       <strong>Čas:</strong> {workshop.datesAndLocation.schedule}
                     </p>
                   )}
