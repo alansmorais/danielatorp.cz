@@ -1,6 +1,7 @@
 import { UpcomingDateItem } from '../types';
 
 export const DEFAULT_UPCOMING_DATES: UpcomingDateItem[] = [
+  { text: "21–22.11.2026 - Trauma Workshops Ané & Daniela (Oslo)", url: "workshops/trauma-workshops-ane-daniela.html", workshopId: "trauma-workshops-ane-daniela" },
   { text: "3.10.2026 - Matka a dcera", url: "workshops/matka-a-dcera.html" },
   { text: "4.10.2026 - Umění potěšit ženu", url: "workshops/umeni-potesit-zenu.html" },
   { text: "18.10.2026 - Umění potěšit muže", url: "workshops/umeni-potesit-muze.html" },
