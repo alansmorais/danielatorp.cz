@@ -42,7 +42,7 @@ export const WorkshopDetailPage: React.FC<WorkshopDetailPageProps> = ({
     event.preventDefault();
     setCheckoutError('');
 
-    const checkoutEndpoint = (import.meta as ImportMeta & { env?: { VITE_STRIPE_WORKER_URL?: string } }).env?.VITE_STRIPE_WORKER_URL;
+    const checkoutEndpoint = (import.meta as ImportMeta & { env?: { VITE_STRIPE_WORKER_URL?: string } }).env?.VITE_STRIPE_WORKER_URL || 'https://danielatorp-stripe-checkout.alanpkmorais.workers.dev';
     if (!checkoutEndpoint) {
       setCheckoutError('Online platba se právě připravuje. Prosím kontaktujte Danielu prostřednictvím kontaktního formuláře.');
       return;
