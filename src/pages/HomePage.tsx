@@ -40,7 +40,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         // Keep internal workshop links inside this app; only external links open a new tab.
         try {
           const link = new URL(item.url);
-          if (link.hostname === window.location.hostname) {
+          const isInternalWorkshopDomain =
+            link.hostname === window.location.hostname ||
+            link.hostname === 'danielatorp.cz' ||
+            link.hostname === 'www.danielatorp.cz';
+          if (isInternalWorkshopDomain) {
             const match = link.pathname.match(/workshops\/([^/]+?)(?:\.html)?\/?$/i);
             if (match?.[1]) {
               onNavigate(`workshop-${decodeURIComponent(match[1])}`);
