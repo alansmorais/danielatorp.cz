@@ -285,9 +285,7 @@ export const WORKSHOPS: WorkshopItem[] = [
       price: '2 250 Kč / setkání',
       note: 'Částku zašlete na účet 3497044044/5500 se zprávou „Ženská esence – [Název setkání]“.'
     }
-  }
-
-  ,
+  },
   {
     id: 'trauma-workshops-ane-daniela',
     slug: 'trauma-workshops-ane-daniela',
@@ -321,11 +319,10 @@ export const WORKSHOPS: WorkshopItem[] = [
     ],
     datesAndLocation: {
       dates: 'November 21–22, 2026',
-      schedule: 'November 21: 10:00–18:00\\nNovember 22: 10:00–15:00',
+      schedule: 'November 21: 10:00–18:00\nNovember 22: 10:00–15:00',
       location: 'Prindsen Yoga & Terapi, Storgata 36C, Oslo, Norway',
-      price: '1 PLN — temporary payment test price',
-      note: 'Original workshop price: 2,850 NOK. The 1 PLN amount is temporary for checkout testing only and is not the advertised workshop price. Original registration details: SMS 958 64 782; 50% deposit via Vipps #970088.'
+      price: '2 280 Kč',
+      note: 'Price per participant for the two-day workshop in Oslo, November 21–22, 2026.'
     }
   }
-
 ];
