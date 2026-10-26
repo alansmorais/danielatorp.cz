@@ -53,7 +53,7 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: '4. 10. 2026',
       schedule: 'Neděle 10:00 – 18:00',
       location: 'Praha / Kamenný Újezd',
-      price: '3 500 Kč',
+      price: '2 900 Kč / osoba',
       note: 'Cena za osobu. V ceně jsou výukové materiály a občerstvení.'
     }
   },
