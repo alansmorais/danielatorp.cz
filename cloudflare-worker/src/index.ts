@@ -57,13 +57,17 @@ export default {
     const url = new URL(request.url);
     const origin = request.headers.get('Origin') || '';
     const allowedOrigin = env.ALLOWED_ORIGIN;
+    // Permit the local Vite preview for testing without changing the production site URL.
+    const isLocalPreviewOrigin = origin === 'http://localhost:3000';
+    const requestOriginAllowed = origin === allowedOrigin || isLocalPreviewOrigin;
+    const corsOrigin = requestOriginAllowed ? origin : allowedOrigin;
 
     if (request.method === 'OPTIONS') {
-      if (origin !== allowedOrigin) return new Response(null, { status: 403 });
+      if (!requestOriginAllowed) return new Response(null, { status: 403 });
       return new Response(null, {
         status: 204,
         headers: {
-          'Access-Control-Allow-Origin': allowedOrigin,
+          'Access-Control-Allow-Origin': corsOrigin,
           'Access-Control-Allow-Methods': 'POST, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type, Stripe-Signature',
           'Access-Control-Max-Age': '86400',
@@ -119,7 +123,7 @@ export default {
     if (url.pathname !== '/api/create-checkout-session' || request.method !== 'POST') {
       return new Response('Not found', { status: 404 });
     }
-    if (origin !== allowedOrigin) return json({ error: 'Origin is not allowed.' }, 403, allowedOrigin);
+    if (!requestOriginAllowed) return json({ error: 'Origin is not allowed.' }, 403, allowedOrigin);
     if (!env.STRIPE_SECRET_KEY || !env.SITE_URL) {
       return json({ error: 'Platby zatím nejsou nakonfigurovány. Prosím kontaktujte Danielu.' }, 503, allowedOrigin);
     }
@@ -173,6 +177,6 @@ export default {
     if (!stripeResponse.ok || !stripeData.url) {
       return json({ error: 'Stripe se nepodařilo připravit. Zkuste to později.' }, 502, allowedOrigin);
     }
-    return json({ url: stripeData.url }, 200, allowedOrigin);
+    return json({ url: stripeData.url }, 200, corsOrigin);
   }
 };
