@@ -11,11 +11,10 @@ const WORKSHOPS: Record<string, { title: string; amount: number; currency: 'czk'
   'umeni-potesit-zenu': { title: 'Umění potěšit ženu', amount: 290000, currency: 'czk', description: 'Workshop pro muže' },
   'umeni-potesit-muze': { title: 'Umění potěšit muže', amount: 290000, currency: 'czk', description: 'Workshop pro ženy' },
   'jen-pro-pary': { title: 'Umění potěšit (pro páry)', amount: 290000, currency: 'czk', description: 'Cena za osobu' },
-  'tajemstvi-panevniho-dna': { title: 'Tajemství pánevního dna', amount: 290000, currency: 'czk', description: 'Workshop pro ženy' },
-  'byla-jsem-tehotna-ale': { title: 'Byla jsem těhotná, ale…', amount: 280000, currency: 'czk', description: 'Podpůrný workshop' },
-  'porod-jako-jistota': { title: 'Porod jako jistota', amount: 420000, currency: 'czk', description: 'Cena včetně partnera' },
-  'matka-a-dcera': { title: 'Matka a dcera', amount: 680000, currency: 'czk', description: 'Cena za dvojici' },
-  'Hraj-si-se-mnou': { title: 'Hraj si se mnou', amount: 480000, currency: 'czk', description: 'Včetně ubytování a stravy' }
+  'tajemstvi-panevniho-dna': { title: 'Tajemství pánevního dna', amount: 225000, currency: 'czk', description: 'Workshop pro ženy; stravování se platí zvlášť' },
+  'byla-jsem-tehotna-ale': { title: 'Byla jsem těhotná, ale…', amount: 99000, currency: 'czk', description: 'Podpůrný workshop pro ženy' },
+  'porod-jako-jistota': { title: 'Porod jako jistota', amount: 99000, currency: 'czk', description: 'Základní cena za účast; doprovod +400 Kč je nutné řešit zvlášť' },
+  'matka-a-dcera': { title: 'Matka a dcera', amount: 225000, currency: 'czk', description: 'Cena za dvojici; další členka rodiny +500 Kč se musí řešit zvlášť' },
 };
 
 function json(data: unknown, status: number, origin: string): Response {
