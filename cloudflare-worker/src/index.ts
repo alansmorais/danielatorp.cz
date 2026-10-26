@@ -8,9 +8,9 @@ export interface Env {
 }
 
 const WORKSHOPS: Record<string, { title: string; amount: number; currency: 'czk'; description: string }> = {
-  'umeni-potesit-zenu': { title: 'Umění potěšit ženu', amount: 350000, currency: 'czk', description: 'Workshop pro muže' },
-  'umeni-potesit-muze': { title: 'Umění potěšit muže', amount: 350000, currency: 'czk', description: 'Workshop pro ženy' },
-  'jen-pro-pary': { title: 'Umění potěšit (pro páry)', amount: 850000, currency: 'czk', description: 'Cena za pár' },
+  'umeni-potesit-zenu': { title: 'Umění potěšit ženu', amount: 290000, currency: 'czk', description: 'Workshop pro muže' },
+  'umeni-potesit-muze': { title: 'Umění potěšit muže', amount: 290000, currency: 'czk', description: 'Workshop pro ženy' },
+  'jen-pro-pary': { title: 'Umění potěšit (pro páry)', amount: 290000, currency: 'czk', description: 'Cena za osobu' },
   'tajemstvi-panevniho-dna': { title: 'Tajemství pánevního dna', amount: 290000, currency: 'czk', description: 'Workshop pro ženy' },
   'byla-jsem-tehotna-ale': { title: 'Byla jsem těhotná, ale…', amount: 280000, currency: 'czk', description: 'Podpůrný workshop' },
   'porod-jako-jistota': { title: 'Porod jako jistota', amount: 420000, currency: 'czk', description: 'Cena včetně partnera' },
