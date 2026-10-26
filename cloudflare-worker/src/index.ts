@@ -175,7 +175,7 @@ export default {
     });
     const stripeData = await stripeResponse.json() as { url?: string; error?: { message?: string } };
     if (!stripeResponse.ok || !stripeData.url) {
-      return json({ error: 'Stripe se nepodařilo připravit. Zkuste to později.' }, 502, allowedOrigin);
+      return json({ error: 'Stripe se nepodařilo připravit. Zkuste to později.', stripeError: stripeData.error?.message || 'Unknown Stripe API error', stripeErrorType: (stripeData.error as { type?: string } | undefined)?.type || null, stripeErrorCode: (stripeData.error as { code?: string } | undefined)?.code || null }, 502, allowedOrigin);
     }
     return json({ url: stripeData.url }, 200, corsOrigin);
   }
