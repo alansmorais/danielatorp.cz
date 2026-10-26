@@ -286,4 +286,46 @@ export const WORKSHOPS: WorkshopItem[] = [
       note: 'Částku zašlete na účet 3497044044/5500 se zprávou „Ženská esence – [Název setkání]“.'
     }
   }
+
+  ,
+  {
+    id: 'trauma-workshops-ane-daniela',
+    slug: 'trauma-workshops-ane-daniela',
+    title: 'Trauma Workshops Ané & Daniela',
+    tag: 'Two-day workshop · Oslo, Norway',
+    subtitle: 'Two days that can change the way you understand yourself and others. / To dager som kan endre måten du forstår deg selv og andre på.',
+    description: 'Explore trauma, attachment theory, relationships, and practical tools for personal growth in a two-day workshop in Oslo.',
+    image: '/images/1.jpg',
+    targetAudience: 'Anyone who wants to better understand themselves, their relationships and others, as well as professionals working in helping professions.',
+    fullDescription: [
+      'ENGLISH',
+      'Do you think you have no trauma? Perhaps you have simply never considered how it might show up in your life. Trauma is not always the result of a major or dramatic event. It can influence our relationships, emotions, behaviours, and the way we see ourselves.',
+      'Why are we sometimes afraid of closeness when we deeply long for it? Why do we react in ways we do not understand? And how do childhood experiences and early relationships shape our lives today?',
+      'During this two-day workshop, we will explore trauma, how it develops, its different forms, and its connection to attachment theory. You will experience practical demonstrations and simple exercises to use in everyday life, learn to recognise your reactions and gain practical tools for personal growth and work with clients.',
+      'Two days of learning, practical experience, and new perspectives. Sometimes understanding what is happening within us is the first step towards responding differently.',
+      'NORSK',
+      'Tror du at du ikke har opplevd traumer? Kanskje du bare aldri har tenkt over hvordan traumer kan komme til uttrykk i livet ditt. Traumer er ikke alltid et resultat av en stor eller dramatisk hendelse. De kan påvirke relasjonene våre, følelsene våre, atferden vår og måten vi ser oss selv på.',
+      'Hvorfor er vi noen ganger redde for nærhet, selv om vi lengter etter den? Hvorfor reagerer vi på måter vi ikke forstår? Og hvordan påvirker barndomserfaringer og tidlige relasjoner livet vårt i dag?',
+      'I løpet av denne todagers workshopen utforsker vi traumer, hvordan de oppstår, ulike former for traumer og sammenhengen med tilknytningsteori. Du får se praktiske demonstrasjoner og lære enkle øvelser du kan bruke i hverdagen, gjenkjenne egne reaksjoner og få verktøy som støtter personlig utvikling og arbeidet med klienter.',
+      'To dager med læring, praktisk erfaring og nye perspektiver. Noen ganger er det å forstå hva som skjer i oss, det første steget mot å kunne reagere annerledes.',
+      'FACILITATORS',
+      'Anne Brit Borch Sandberg — Psychiatric Nurse and Cognitive Therapist. Her AIM approach stands for Acknowledgment, Insight and Coping. She supports people in understanding early attachment patterns, unconscious thoughts and feelings, and developing a kinder inner guide.',
+      'Daniela Torp has more than 20 years of experience guiding people through topics related to the body, intimacy, sexuality and relationships. She works with individuals and couples, combining coaching, body-based practices and trauma-informed approaches. She trained in Sexological Bodywork in California and completed training in Compassionate Trauma Therapy in 2025.',
+      'For more information: www.sheacademy.no and www.danielatorp.no'
+    ],
+    features: [
+      'Explore trauma, its different forms, and attachment theory',
+      'Practical demonstrations and simple everyday exercises',
+      'Recognise personal reactions and explore possible underlying causes',
+      'Tools for personal growth and for professionals working with clients'
+    ],
+    datesAndLocation: {
+      dates: 'November 21–22, 2026',
+      schedule: 'November 21: 10:00–18:00\\nNovember 22: 10:00–15:00',
+      location: 'Prindsen Yoga & Terapi, Storgata 36C, Oslo, Norway',
+      price: '1 PLN — temporary payment test price',
+      note: 'Original workshop price: 2,850 NOK. The 1 PLN amount is temporary for checkout testing only and is not the advertised workshop price. Original registration details: SMS 958 64 782; 50% deposit via Vipps #970088.'
+    }
+  }
+
 ];
