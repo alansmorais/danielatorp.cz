@@ -25,8 +25,8 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: '3. 10. 2026',
       schedule: 'Sobota 10:00 – 18:00',
       location: 'Praha / Kamenný Újezd',
-      price: '3 500 Kč',
-      note: 'V ceně je drobné občerstvení, čaj a studijní materiály.'
+      price: '2 900 Kč / osoba',
+      note: 'Cena za osobu. V ceně je drobné občerstvení, čaj a studijní materiály.'
     }
   },
   {
@@ -53,8 +53,8 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: '4. 10. 2026',
       schedule: 'Neděle 10:00 – 18:00',
       location: 'Praha / Kamenný Újezd',
-      price: '3 500 Kč',
-      note: 'V ceně jsou výukové materiály a občerstvení.'
+      price: '2 900 Kč / osoba',
+      note: 'Cena za osobu. V ceně jsou výukové materiály a občerstvení.'
     }
   },
   {
@@ -81,8 +81,8 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: 'Vybrané víkendy v roce 2026',
       schedule: 'Víkendový formát (So–Ne)',
       location: 'Kamenný Újezd u Nýřan',
-      price: '8 500 Kč / pár',
-      note: 'Ubytování a strava zajištěny v klidném retreatovém centru.'
+      price: '2 900 Kč / osoba',
+      note: 'Cena je za osobu; účastníci se přihlašují a platí jednotlivě.'
     }
   },
   {
@@ -109,7 +109,7 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: 'Termíny na dotaz',
       schedule: 'Jednodenní intenzivní kurz (10:00 – 17:00)',
       location: 'Praha / Plzeň',
-      price: '2 900 Kč',
+      price: '2 250 Kč',
       note: 'Vhodné i pro ženy po gynekologických operacích.'
     }
   },
@@ -137,7 +137,7 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: 'Termíny podle zájmu (komorní skupina)',
       schedule: 'Sobota 10:00 – 17:00',
       location: 'Klidný ateliér v přírodě',
-      price: '2 800 Kč',
+      price: '990 Kč',
       note: 'Maximální počet účastnic je 8 pro zajištění bezpečí a intimity.'
     }
   },
@@ -165,8 +165,8 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: 'Průběžně během roku',
       schedule: 'Víkendový seminář',
       location: 'Praha / Kamenný Újezd',
-      price: '4 200 Kč (včetně partnera)',
-      note: 'Doporučeno absolvovat od 28. týdne těhotenství.'
+      price: '990 Kč / žena; doprovod +400 Kč',
+      note: 'Základní cena za účast; doprovod +400 Kč je nutné řešit zvlášť. Doporučeno od 28. týdne těhotenství.'
     }
   },
   {
@@ -193,8 +193,8 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: 'Podzim 2026',
       schedule: 'Víkendový workshop',
       location: 'Kamenný Újezd u Nýřan',
-      price: '6 800 Kč (za dvojici matka + dcera)',
-      note: 'Zahrnuje ubytování v přírodě a výživnou stravu.'
+      price: '2 250 Kč / dvojice; další členka rodiny +500 Kč',
+      note: 'Cena za dvojici; další členka rodiny +500 Kč se musí řešit zvlášť.'
     }
   },
   {
@@ -221,8 +221,8 @@ export const WORKSHOPS: WorkshopItem[] = [
       dates: '11.–13. prosince 2026',
       schedule: 'Pátek 11. 12.: 17:00–21:00\nSobota 12. 12.: 10:00–23:00\nNeděle 13. 12.: 10:00–15:00',
       location: 'Kamenný Újezd 38, Nýřany',
-      price: '4 800 Kč',
-      note: 'Včetně ubytování a stravy.'
+      price: 'Cena na dotaz',
+      note: 'Cena se potvrzuje při dotazu; kontaktujte prosím Danielu.'
     }
   },
   {
