@@ -41,9 +41,21 @@ function doPost(e) {
     var headers = [
       'Stripe Event ID', 'Checkout Session ID', 'Payment Intent ID', 'Payment Status',
       'Workshop ID', 'Workshop Title', 'Participant Name', 'Participant Email',
-      'Amount (minor units)', 'Currency', 'Paid At', 'Recorded At'
+      'Amount (minor units)', 'Currency', 'Paid At', 'Recorded At',
+      'Registration Source', 'Source Website', 'Site Language'
     ];
-    if (sheet.getLastRow() === 0) sheet.appendRow(headers);
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(headers);
+    } else {
+      // Extend existing Registrations sheets without disturbing their existing rows.
+      var existingHeaders = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0].map(String);
+      headers.forEach(function(header) {
+        if (existingHeaders.indexOf(header) === -1) {
+          sheet.getRange(1, sheet.getLastColumn() + 1).setValue(header);
+          existingHeaders.push(header);
+        }
+      });
+    }
 
     // Serialize duplicate checks so Stripe webhook retries cannot create duplicate rows.
     var lock = LockService.getScriptLock();
@@ -68,7 +80,10 @@ function doPost(e) {
         Number(body.amount_total || 0),
         String(body.currency || '').toUpperCase(),
         body.paid_at || new Date().toISOString(),
-        new Date().toISOString()
+        new Date().toISOString(),
+        String(body.registration_source || metadata.registration_source || 'DanielaTorp.no'),
+        String(body.source_website || metadata.source_website || metadata.site_url || ''),
+        String(body.site_language || metadata.site_language || 'NO')
       ]);
     } finally {
       lock.releaseLock();
