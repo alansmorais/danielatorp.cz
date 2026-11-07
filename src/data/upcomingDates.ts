@@ -31,7 +31,7 @@ export async function fetchLiveUpcomingDates(lang: 'CZ' | 'NO' | 'EN' = 'CZ'): P
         const textValue = typeof item === 'string' ? item : item && typeof item === 'object' ? item.text : '';
         const urlValue = item && typeof item === 'object' && typeof item.url === 'string' ? item.url : '';
         // This Oslo Trauma Workshops event belongs on the Norwegian website only.
-        const isNorwegianTraumaWorkshop = /trauma\\s*workshops?.{0,40}(an[eé]|anne).{0,20}daniela|(?:an[eé]|anne).{0,20}daniela.{0,40}trauma\\s*workshops?|trauma-workshops-ane-daniela/i.test(`${textValue} ${urlValue}`);
+        const isNorwegianTraumaWorkshop = /trauma\s*workshops?.{0,40}(an[eé]|anne).{0,20}daniela|(?:an[eé]|anne).{0,20}daniela.{0,40}trauma\s*workshops?|trauma-workshops-ane-daniela/i.test(`${textValue} ${urlValue}`);
         if (isNorwegianTraumaWorkshop) continue;
 
         if (typeof item === 'string' && item.trim()) {
