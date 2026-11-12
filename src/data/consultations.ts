@@ -8,7 +8,7 @@ export const CONSULTATION_DATA = {
   title: 'Osobní konzultace',
   subtitle: 'Pokud dáváte přednost osobnímu setkání a cítíte, že některé věci je snazší říct tváří v tvář, jsem tu pro vás.',
   intro: 'Nabízím konzultace pro páry i jednotlivce. Pomohu vám hledat cestu k řešení vašich obtíží. Nemohu je vyřešit za vás, ale mohu vás na cestě k vašemu cíli provázet. Nejdůležitější část práce však zůstává na vás.',
-  formatInfo: 'Osobní konzultace probíhají v České republice (Praha / Kamenný Újezd u Nýřan). Online konzultace jsou dostupné mezinárodně prostřednictvím šifrovaného videohovoru. Máte-li zájem, napište mi prostřednictvím kontaktního formuláře níže.',
+  formatInfo: 'Konzultace probíhají online a jsou dostupné mezinárodně prostřednictvím šifrovaného videohovoru. Máte-li zájem, napište mi prostřednictvím kontaktního formuláře níže.',
   topics: [
     'Řešení partnerských potíží ve všech oblastech intimity – 6 pilířů intimity',
     'Bolest při pohlavním styku a vaginizmus',
