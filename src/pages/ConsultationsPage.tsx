@@ -109,7 +109,7 @@ export const ConsultationsPage: React.FC<ConsultationsPageProps> = ({
                 Kde konzultace probíhají?
               </h3>
               <p style={{ color: '#555', fontSize: '15px' }}>
-                Osobní konzultace probíhají v České republice (Praha / Kamenný Újezd u Nýřan). Online konzultace jsou dostupné mezinárodně.
+                Konzultace probíhají online a jsou dostupné mezinárodně prostřednictvím šifrovaného videohovoru.
               </p>
 
               <div style={{ marginTop: '25px' }}>
