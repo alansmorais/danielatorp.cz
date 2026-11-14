@@ -70,6 +70,7 @@ export const WORKSHOPS: WorkshopItem[] = [
       'Znovuobjevte kouzlo intimity ve dvou. Společná cesta do dynamiky mužského a ženského principu pro udržení vášně i hluboké důvěry.',
       'Ve všedním shonu se snadno stane, že partneři žijí spíše jako spolubydlící či organizační tým rodiny. Intimita ustupuje do pozadí.',
       'Tento workshop nabízí prostor pouze pro vás dva. Naučíte se rituály zpomalení, techniky vědomého doteku a způsoby, jak vyjádřit svá přání i hranice s lehkostí.'
+      , 'Jako dárek od nás dostanete Knihu lásky, abyste mohli „studovat“ i doma :)'
     ],
     features: [
       'Společná dechová cvičení a zklidnění nervového systému',
