@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="footer-bottom">
           <div className="social">
             <a
-              href="https://www.facebook.com/profile.php?id=61592808299591"
+              href="https://facebook.com/danielatorp"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
